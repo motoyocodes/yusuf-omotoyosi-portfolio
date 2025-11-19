@@ -101,7 +101,7 @@ function Hero() {
         </div>
 
         {/* Orbiting Dots */}
-        {orbitDots.map((dot, index) => (
+        {orbitDots.map((_, index) => (
           <motion.div
             key={index}
             className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 bg-white rounded-full"
