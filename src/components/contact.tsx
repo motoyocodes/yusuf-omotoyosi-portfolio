@@ -72,7 +72,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="md:text-5xl text-3xl font-bold text-center"
+          className="md:text-3xl text-2xl font-bold text-center"
         >
           Contact Me
         </motion.h2>
@@ -90,7 +90,7 @@ export default function Contact() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="md:text-3xl text-2xl text-center max-w-2xl mb-12"
+        className="md:text-2xl text-xl text-center max-w-2xl mb-12"
       >
         Contact me to discuss your web development needs. Send me a message, and
         I'll respond shortly.

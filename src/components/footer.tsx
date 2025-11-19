@@ -5,7 +5,7 @@ export const Footer = () => {
     <div className="w-full mt-20 py-10 border-t border-white/10 text-white font-family-bellefair">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left - Name */}
-        <h2 className="md:text-3xl text-xl font-family-momo">
+        <h2 className="md:text-2xl text-xl font-family-momo">
           {" "}
           Omotoyosi Yusuf
         </h2>
@@ -29,7 +29,7 @@ export const Footer = () => {
         </div>
 
         {/* Right - Copyright */}
-        <p className="text-white/70 md:text-sm text-xs font-extralight font-family-momo">
+        <p className="text-white/70 text-xs font-extralight font-family-momo">
           © {new Date().getFullYear()} MotoyoCodes. All Rights Reserved.
         </p>
       </div>

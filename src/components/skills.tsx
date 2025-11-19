@@ -107,7 +107,7 @@ export default function Skills() {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       id="skills"
-      className="min-h-screen w-full md:px-20 px-8 sm:px-12  xl:px-30 py-20 text-white font-family-bellefair"
+      className="min-h-screen w-full md:px-20 px-8 sm:px-12 xl:px-30 py-12 text-white font-family-bellefair"
     >
       {/* TITLE + LINES */}
       <div className="flex items-center gap-6 mb-16">
@@ -121,7 +121,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="md:text-5xl text-3xl font-bold"
+          className="md:text-4xl text-3xl font-bold"
         >
           Tech Stack
         </motion.h2>

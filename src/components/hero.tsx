@@ -25,12 +25,12 @@ function Hero() {
     >
       {/* Left Side */}
       <div className="flex flex-col text-center md:text-left items-center md:items-start">
-        <h1 className="text-white font-family-bellefair text-2xl md:text-4xl mb-6 md:mb-10">
+        <h1 className="text-white font-family-bellefair text-2xl md:text-4xl mb-6 md:mb-8">
           Hi, my name is
         </h1>
 
         <ShimmerText
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-family-momo leading-tight"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-family-momo leading-tight"
           text="Yusuf Omotoyosi."
         />
 
@@ -40,7 +40,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-white font-family-bellefair 
-          text-2xl md:text-3xl lg:text-4xl mb-4 mt-6"
+          text-2xl md:text-3xl lg:text-3xl mb-4 mt-6"
         >
           I'm a Frontend Web Developer{" "}
           <motion.span
@@ -58,7 +58,7 @@ function Hero() {
           </motion.span>
         </motion.p>
 
-        <p className="text-white font-family-bellefair text-2xl md:text-3xl lg:text-4xl mb-8">
+        <p className="text-white font-family-bellefair text-2xl md:text-3xl lg:text-3xl mb-8">
           I create exciting stuff on the Internet.
         </p>
 
