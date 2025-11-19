@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import image from "../assets/image.jpg";
+import img1 from "../assets/img1.jpg";
 import ShimmerText from "./kokonutui/shimmer-text";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -94,7 +94,7 @@ function Hero() {
         {/* Image */}
         <div className="flex items-center justify-center w-full aspect-square rounded-full z-10">
           <img
-            src={image}
+            src={img1}
             alt="Hero Avatar"
             className="w-full mt-20 md:mt-0  h-full object-cover rounded-full"
           />
