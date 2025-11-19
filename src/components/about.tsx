@@ -89,7 +89,7 @@ export default function About() {
           {/* Download CV */}
           <motion.a
             href="/cv.pdf"
-            download
+            target="blank"
             className="
       px-4 sm:px-6 py-3 sm:py-1 text-lg  sm:text-xl rounded-xl font-medium
       border-2 bg-transparent
@@ -103,7 +103,7 @@ export default function About() {
             whileHover="hover"
           >
             <FaFile />
-            Download CV
+            View CV
           </motion.a>
 
           {/* View Projects */}
