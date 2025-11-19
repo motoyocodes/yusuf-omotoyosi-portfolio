@@ -19,7 +19,7 @@ function Hero() {
         flex flex-col-reverse xl:flex-row 
         justify-between items-center 
         px-6 md:px-20 lg:px-30 
-        py-20 md:py-32 lg:py-40
+        py-10 md:py-32 lg:py-40
         gap-16 md:gap-10
       "
     >

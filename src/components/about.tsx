@@ -34,7 +34,7 @@ export default function About() {
   return (
     <motion.section
       id="about"
-      className="min-h-screen z-10 w-full px-10 py-20 text-white font-family-bellefair"
+      className="min-h-screen z-10 w-full px-10 sm:py-8 md:py-12 lg:py-20 text-white font-family-bellefair"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
@@ -63,7 +63,7 @@ export default function About() {
       <div className="flex flex-col items-center">
         {/* PARAGRAPHS */}
         <motion.div
-          className="max-w-5xl leading-relaxed text-2xl md:text-3xl space-y-6"
+          className="max-w-5xl leading-relaxed text-xl md:text-3xl space-y-6"
           variants={container}
         >
           {[
@@ -91,7 +91,7 @@ export default function About() {
             href="/cv.pdf"
             download
             className="
-      px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-2xl rounded-xl font-medium
+      px-6 sm:px-8 py-3 sm:py-4 text-lg  sm:text-2xl rounded-xl font-medium
       border-2 bg-transparent
       border-linear-to-r from-purple-500 to-pink-500
       text-white flex gap-2 items-center justify-center hover:gap-3 transition-all ease-in

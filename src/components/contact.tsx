@@ -57,10 +57,10 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen px-20 py-20 text-white font-family-bellefair flex flex-col items-center"
+      className="min-h-screen md:px-20 px-5 md:py-20 pt-20  text-white font-family-bellefair flex flex-col items-center"
     >
       {/* CONTACT HEADER */}
-      <div className="flex items-center gap-6 mb-16 w-full">
+      <div className="flex items-center gap-3 md:gap-6 md:mb-16 mb-8  w-full">
         <motion.div
           initial={{ width: 0, opacity: 0 }}
           whileInView={{ width: "100%", opacity: 1 }}
@@ -72,7 +72,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-5xl font-bold text-center"
+          className="md:text-5xl text-3xl font-bold text-center"
         >
           Contact Me
         </motion.h2>
@@ -90,7 +90,7 @@ export default function Contact() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-3xl text-center max-w-2xl mb-12"
+        className="md:text-3xl text-2xl text-center max-w-2xl mb-12"
       >
         Contact me to discuss your web development needs. Send me a message, and
         I'll respond shortly.
@@ -104,26 +104,26 @@ export default function Contact() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
         className="
-          w-full max-w-2xl 
+          w-full max-w-3xl 
           bg-white/5 
           backdrop-blur-lg 
           rounded-xl 
-          p-10 
+          md:p-10 py-5 px-2
           border border-purple-500/20
           shadow-[0_0_25px_rgba(236,72,153,0.12)]
-          flex flex-col gap-6
+          flex flex-col md:gap-6 gap-4
         "
       >
         {/* NAME */}
         <motion.div animate={errors.name ? shake : {}}>
-          <label className="text-2xl font-medium">Name</label>
+          <label className="md:text-2xl text-xl font-medium">Name</label>
           <input
             {...register("name")}
             className="
               bg-white/5 border border-purple-500/20
-              px-4 py-3 rounded-lg outline-none 
+              px-4 md:py-3 py-2 rounded-lg outline-none 
               text-white placeholder-white/50 mt-2
-              focus:border-pink-200 placeholder:text-2xl transition w-full
+              focus:border-pink-200 md:placeholder:text-2xl placeholder:text-xl transition w-full
             "
             placeholder="Enter your name"
           />
@@ -134,14 +134,14 @@ export default function Contact() {
 
         {/* EMAIL */}
         <motion.div animate={errors.email ? shake : {}}>
-          <label className="text-2xl font-medium">Email</label>
+          <label className="md:text-2xl text-xl font-medium">Email</label>
           <input
             {...register("email")}
             className="
               bg-white/5 border border-purple-500/20
-              px-4 py-3 rounded-lg outline-none 
+              px-4 md:py-3 py-2 rounded-lg outline-none 
               text-white placeholder-white/50 mt-2
-              focus:border-pink-200 placeholder:text-2xl transition w-full
+              focus:border-pink-200 md:placeholder:text-2xl placeholder:text-xl transition w-full
             "
             placeholder="Enter your email"
           />
@@ -152,15 +152,15 @@ export default function Contact() {
 
         {/* MESSAGE */}
         <motion.div animate={errors.message ? shake : {}}>
-          <label className="text-2xl font-medium">Message</label>
+          <label className="md:text-2xl text-xl font-medium">Message</label>
           <textarea
             {...register("message")}
             rows={5}
             className="
               bg-white/5 border border-purple-500/20
-              px-4 py-3 rounded-lg outline-none 
+              px-4 md:py-3 py-2 rounded-lg outline-none 
               text-white placeholder-white/50 mt-2
-              focus:border-pink-200 placeholder:text-2xl transition w-full
+              focus:border-pink-200 md:placeholder:text-2xl placeholder:text-xl transition w-full
             "
             placeholder="Write your message..."
           />
@@ -175,8 +175,8 @@ export default function Contact() {
         <button
           disabled={isSubmitting}
           className="
-            mt-4 w-full 
-            py-3 
+            md:mt-4 mt-3 w-full 
+            md:py-3 py-2
             bg-linear-to-r from-purple-500 to-pink-500 
             rounded-xl text-xl font-bold 
             hover:opacity-85 transition

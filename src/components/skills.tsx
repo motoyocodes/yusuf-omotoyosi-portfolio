@@ -80,17 +80,21 @@ export default function Skills() {
         variants={itemVariants}
         viewport={{ once: false, amount: 0.2 }}
         className="
-          flex flex-col items-center gap-2 
-          p-4 rounded-xl
-          bg-white/5 
-          border border-pink-500/40 
-          shadow-[0_0_15px_rgba(236,72,153,0.15)] 
-          cursor-pointer tilt-hover
-        "
+        flex flex-col items-center gap-2 
+        p-3 sm:p-4 md:p-4
+        rounded-xl
+        bg-white/5 
+        border border-pink-500/40 
+        shadow-[0_0_15px_rgba(236,72,153,0.15)] 
+        cursor-pointer tilt-hover
+      "
         whileHover={{ scale: 1.05 }}
       >
-        <tech.icon size={48} style={{ color: tech.color }} />
-        <span className="text-white text-xl font-family-bellefair">
+        <tech.icon
+          className="text-3xl sm:text-4xl md:text-[48px]"
+          style={{ color: tech.color }}
+        />
+        <span className="text-white text-sm sm:text-lg md:text-xl font-family-bellefair">
           {tech.name}
         </span>
       </motion.div>
@@ -103,7 +107,7 @@ export default function Skills() {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       id="skills"
-      className="min-h-screen w-full md:px-20 xl:px-30 px-10 py-20 text-white font-family-bellefair"
+      className="min-h-screen w-full md:px-20 px-8 sm:px-12  xl:px-30 py-20 text-white font-family-bellefair"
     >
       {/* TITLE + LINES */}
       <div className="flex items-center gap-6 mb-16">
@@ -117,7 +121,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-5xl font-bold"
+          className="md:text-5xl text-3xl font-bold"
         >
           Tech Stack
         </motion.h2>
@@ -139,24 +143,24 @@ export default function Skills() {
       >
         {/* Frontend */}
         <div>
-          <h3 className="text-3xl font-bold mb-6">Frontend</h3>
-          <motion.div className="grid grid-cols-3 sm:grid-cols-4 gap-6">
+          <h3 className="md:text-3xl text-2xl font-bold mb-6">Frontend</h3>
+          <motion.div className="grid grid-cols-3 md:grid-cols-4 gap-6 justify-center">
             {renderTech(frontend)}
           </motion.div>
         </div>
 
         {/* Backend */}
         <div>
-          <h3 className="text-3xl font-bold mb-6">Backend</h3>
-          <motion.div className="grid grid-cols-3 sm:grid-cols-4 gap-6">
+          <h3 className="md:text-3xl text-2xl  font-bold mb-6">Backend</h3>
+          <motion.div className="grid grid-cols-3 md:grid-cols-4 gap-6 justify-center">
             {renderTech(backend)}
           </motion.div>
         </div>
 
         {/* Tools */}
         <div>
-          <h3 className="text-3xl font-bold mb-6">Tech & Tools</h3>
-          <motion.div className="grid grid-cols-4 gap-6 justify-center">
+          <h3 className="md:text-3xl text-2xl  font-bold mb-6">Tech & Tools</h3>
+          <motion.div className="grid grid-cols-3 md:grid-cols-4 gap-6 justify-center">
             {renderTech(tools)}
           </motion.div>
         </div>

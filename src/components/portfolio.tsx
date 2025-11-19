@@ -330,7 +330,7 @@ export default function Portfolio() {
   return (
     <section
       id="portfolio"
-      className="min-h-screen w-full px-20 py-20 text-white font-family-bellefair"
+      className="min-h-screen w-full md:px-20 px-6 md:py-20 py-8 text-white font-family-bellefair"
     >
       {/* SECTION HEADER */}
       <div className="flex flex-col items-center text-center mb-16">
@@ -339,7 +339,7 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-5xl font-bold mb-4"
+          className="text-2xl md:text-5xl font-bold mb-6"
         >
           Portfolio Showcase
         </motion.h2>
@@ -348,7 +348,7 @@ export default function Portfolio() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-3xl max-w-3xl"
+          className="md:text-4xl text-xl sm:text-3xl max-w-5xl"
         >
           Explore my journey through projects. Each represents a milestone in my
           continuous learning path.
@@ -372,7 +372,7 @@ export default function Portfolio() {
         rounded-xl 
         shadow-[0_0_20px_rgba(236,72,153,0.15)] 
         border border-pink-500/20 
-        px-10 py-12               
+        md:px-10 px-4 py-12               
         flex 
         flex-col 
         gap-4 
@@ -390,37 +390,39 @@ export default function Portfolio() {
 
             {/* Title + Description */}
             <div className="flex-1 flex flex-col gap-2">
-              <h3 className="text-xl font-medium font-family-momo">
+              <h3 className="md:text-xl text-lg font-medium font-family-momo">
                 {project.name}
               </h3>
-              <p className="text-white/80  text-2xl mb-0">
+              <p className="text-white/80 text-xl md:text-2xl mb-0">
                 {project.description}
               </p>
             </div>
 
             {/* Tech Stack */}
-            <div className="flex flex-wrap gap-3 mt-0">
+            <div className="flex flex-wrap gap-3 ">
               {project.techStack.map((tech, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2 px-3 py-1 bg-white/10 rounded-lg"
+                  className="flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg"
                 >
                   <tech.icon
                     style={{ color: tech.color }}
-                    className="text-xl"
+                    className=" text-lg md:text-xl"
                   />
-                  <span className="text-white/80 text-xl">{tech.name}</span>
+                  <span className="text-white/80 text-md md:text-xl">
+                    {tech.name}
+                  </span>
                 </div>
               ))}
             </div>
 
             {/*  Live Demo and Details */}
-            <div className="flex justify-between items-center">
+            <div className="flex justify-around items-center">
               <a
                 href={project.liveDemo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-400 hover:underline text-2xl font-medium"
+                className="text-purple-400 hover:underline text-xl md:text-2xl font-medium"
               >
                 Live Demo
               </a>
@@ -429,9 +431,9 @@ export default function Portfolio() {
                 href={project.github}
                 target="_blank"
                 className="
-            px-8 py-2 
+            px-8 py-2 text-center
             bg-linear-to-r from-purple-500 to-pink-500 
-            rounded-lg text-xl
+            rounded-lg md:text-xl text-lg
             text-white hover:translate-x-1
             font-medium 
             hover:opacity-80 
