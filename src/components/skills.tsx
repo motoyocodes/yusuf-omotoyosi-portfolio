@@ -103,7 +103,7 @@ export default function Skills() {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       id="skills"
-      className="min-h-screen w-full px-30 py-20 text-white font-family-bellefair"
+      className="min-h-screen w-full md:px-20 xl:px-30 px-10 py-20 text-white font-family-bellefair"
     >
       {/* TITLE + LINES */}
       <div className="flex items-center gap-6 mb-16">

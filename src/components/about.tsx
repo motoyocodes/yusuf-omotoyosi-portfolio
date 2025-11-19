@@ -85,17 +85,18 @@ export default function About() {
         </motion.div>
 
         {/* BUTTONS */}
-        <motion.div className="flex gap-6 mt-12">
+        <motion.div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-12">
           {/* Download CV */}
           <motion.a
             href="/cv.pdf"
             download
             className="
-              px-8 py-4 text-2xl rounded-xl font-medium
-              border-2 bg-transparent
-              border-linear-to-r from-purple-500 to-pink-500
-              text-white flex gap-2 items-center hover:gap-3 transition-all ease-in
-            "
+      px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-2xl rounded-xl font-medium
+      border-2 bg-transparent
+      border-linear-to-r from-purple-500 to-pink-500
+      text-white flex gap-2 items-center justify-center hover:gap-3 transition-all ease-in
+      whitespace-nowrap
+    "
             variants={buttonVariants}
             initial="hidden"
             whileInView="show"
@@ -109,10 +110,12 @@ export default function About() {
           <motion.a
             href="#portfolio"
             className="
-              px-10 py-4 text-2xl rounded-xl font-medium
-              text-white hover:opacity-80 transition-opacity ease-in-out 
-              bg-linear-to-r from-purple-500 to-pink-500
-            "
+      px-6 sm:px-10 py-3 sm:py-4 text-lg sm:text-2xl rounded-xl font-medium
+      text-white hover:opacity-80 transition-opacity ease-in-out 
+      bg-linear-to-r from-purple-500 to-pink-500
+      whitespace-nowrap
+      text-center
+    "
             variants={buttonVariants}
             initial="hidden"
             whileInView="show"

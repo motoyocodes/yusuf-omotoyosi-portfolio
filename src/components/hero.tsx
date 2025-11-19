@@ -30,7 +30,7 @@ function Hero() {
         </h1>
 
         <ShimmerText
-          className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-family-momo leading-tight"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-family-momo leading-tight"
           text="Yusuf Omotoyosi."
         />
 

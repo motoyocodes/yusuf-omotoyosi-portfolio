@@ -35,11 +35,11 @@ export default function NavBar() {
       className="fixed top-0 left-0 right-0 z-1000 px-6 py-6
                 bg-black/10 backdrop-blur-sm"
     >
-      <div className="max-w-[1440px] mx-auto">
-        <div className="flex justify-between items-center">
+      <div className="max-w-[1440px] ">
+        <div className="flex justify-between items-center xl:px-10">
           {/* LEFT: Shimmer Text */}
           <div>
-            <ShimmerText className="" text="Omotoyosi Yusuf" />
+            <ShimmerText className="text-2xl" text="Omotoyosi Yusuf" />
           </div>
 
           {/* HAMBURGER FOR SMALL SCREENS */}
@@ -60,7 +60,7 @@ export default function NavBar() {
               <li
                 key={link}
                 onClick={() => handleNavClick(link)}
-                className={`relative cursor-pointer md:text-xl text-white font-family-bellefair font-medium lg:text-2xl transition-colors
+                className={`relative cursor-pointer md:text-xl text-white font-family-bellefair font-medium lg:text-md transition-colors
               ${active === link ? "text-purple-400" : "text-white"}
             `}
               >

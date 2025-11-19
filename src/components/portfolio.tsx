@@ -77,7 +77,7 @@ export const projects = [
     image: portfolio,
     description:
       "A sleek and interactive portfolio built to showcase a web developer’s skills, projects, and professional journey through a clean layout and smooth navigation.",
-    liveDemo: "https://example.com/project2",
+    liveDemo: "https://yusuf-omotoyosi-port.netlify.app/",
     github: "https://github.com/motoyocodes/yusuf-omotoyosi-portfolio.git",
     features: [
       { name: "Responsive Layout", description: "Looks great on all devices." },
