@@ -8,7 +8,7 @@ function Hero() {
     <section
       id="home"
       className="
-        relative z-10 
+        relative z-10 border border-red-500
         flex flex-col-reverse xl:flex-row 
         justify-between items-center 
         px-6 md:px-20 lg:px-30 

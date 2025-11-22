@@ -32,7 +32,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-1000 px-6 py-6
+      className="fixed border border-red-500 top-0 left-0 right-0 z-1000 px-6 py-6
                 bg-black/10 backdrop-blur-sm"
     >
       <div className="max-w-[1440px] ">

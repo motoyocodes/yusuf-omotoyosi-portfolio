@@ -2,7 +2,7 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <div className="w-full mt-20 py-10 border-t border-white/10 text-white font-family-bellefair">
+    <div className="w-full border border-red-500 py-10  text-white font-family-bellefair">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left - Name */}
         <h2 className="md:text-2xl text-xl font-family-momo">
