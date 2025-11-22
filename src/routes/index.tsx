@@ -5,7 +5,9 @@ import About from "@/components/about";
 import Skills from "@/components/skills";
 import Portfolio from "@/components/portfolio";
 import Contact from "@/components/contact";
-import { Footer } from "@/components/footer";
+{
+  /* import { Footer } from "@/components/footer";*/
+}
 
 export const Route = createFileRoute("/")({
   component: Homepage,
