@@ -31,6 +31,7 @@ function Homepage() {
       /> */}
 
       {/* All page content */}
+
       <Navbar />
       <Hero />
       <About />
