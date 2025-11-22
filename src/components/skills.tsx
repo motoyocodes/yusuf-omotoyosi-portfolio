@@ -78,7 +78,7 @@ export default function Skills() {
       <motion.div
         key={tech.name}
         variants={itemVariants}
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
         className="
         flex flex-col items-center gap-2 
         p-3 sm:p-4 md:p-4 
