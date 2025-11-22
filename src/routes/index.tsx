@@ -5,9 +5,7 @@ import About from "@/components/about";
 import Skills from "@/components/skills";
 import Portfolio from "@/components/portfolio";
 import Contact from "@/components/contact";
-{
-  /* import { Footer } from "@/components/footer";*/
-}
+import { Footer } from "@/components/footer";
 
 export const Route = createFileRoute("/")({
   component: Homepage,
@@ -15,10 +13,10 @@ export const Route = createFileRoute("/")({
 
 function Homepage() {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full min-h-screen bg-black overflow-x-hidden">
       {/* Cosmic Nebula — full-page background */}
-      {/*<div
-        className="fixed inset-0 -z-10"
+      <div
+        className="fixed inset-0 -z-10 w-full h-full"
         style={{
           background: `
             radial-gradient(ellipse 110% 70% at 25% 80%, rgba(147, 51, 234, 0.12), transparent 55%),
@@ -28,17 +26,18 @@ function Homepage() {
             #000000
           `,
         }}
-      /> */}
+      />
 
       {/* All page content */}
-
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Portfolio />
-      <Contact />
-      {/*<Footer /> */}
+      <div className="relative z-0">
+        <Navbar />
+        <Hero />
+        <About />
+        <Skills />
+        <Portfolio />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 }
