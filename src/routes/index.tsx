@@ -35,7 +35,7 @@ function Homepage() {
       <Skills />
       <Portfolio />
       <Contact />
-      <Footer />
+      {/*<Footer /> */}
     </div>
   );
 }
