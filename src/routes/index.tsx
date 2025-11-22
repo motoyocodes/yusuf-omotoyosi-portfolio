@@ -17,7 +17,7 @@ function Homepage() {
   return (
     <div className="relative w-full">
       {/* Cosmic Nebula — full-page background */}
-      <div
+      {/*<div
         className="fixed inset-0 -z-10"
         style={{
           background: `
@@ -28,7 +28,7 @@ function Homepage() {
             #000000
           `,
         }}
-      />
+      /> */}
 
       {/* All page content */}
       <Navbar />
