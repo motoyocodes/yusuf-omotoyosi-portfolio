@@ -4,13 +4,6 @@ import ShimmerText from "./kokonutui/shimmer-text";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 function Hero() {
-  const orbitDots = [
-    { rotate: 0 },
-    { rotate: 90 },
-    { rotate: 180 },
-    { rotate: 270 },
-  ];
-
   return (
     <section
       id="home"
@@ -84,12 +77,8 @@ function Hero() {
 
       {/* Right Side */}
       <div
-        className="
-        relative flex items-center justify-center 
-        w-[300px] sm:w-[350px]
- md:w-[350px] lg:w-[450px] xl:w-[700px] 
-        aspect-square
-      "
+        className="relative overflow-hidden flex items-center justify-center 
+w-[300px] sm:w-[350px] md:w-[350px] lg:w-[450px] xl:w-[700px] aspect-square"
       >
         {/* Image */}
         <div className="flex items-center justify-center w-full aspect-square rounded-full z-10">
@@ -99,36 +88,6 @@ function Hero() {
             className="w-full mt-20 md:mt-0  h-full object-cover rounded-full"
           />
         </div>
-
-        {/* Orbiting Dots */}
-        {orbitDots.map((_, index) => (
-          <motion.div
-            key={index}
-            className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 bg-white rounded-full"
-            style={{
-              transformOrigin: `
-        center 
-        -${
-          window.innerWidth < 500
-            ? 80
-            : window.innerWidth < 768
-              ? 120
-              : window.innerWidth < 1024
-                ? 160
-                : window.innerWidth < 1440
-                  ? 200
-                  : 260
-        }px
-      `,
-            }}
-            animate={{ rotate: 360 }}
-            transition={{
-              repeat: Infinity,
-              duration: 5 + index,
-              ease: "linear",
-            }}
-          />
-        ))}
       </div>
     </section>
   );
