@@ -330,7 +330,7 @@ export default function Portfolio() {
   return (
     <section
       id="portfolio"
-      className="min-h-screen border border-red-500 w-full md:px-20 px-6 md:py-20 py-8 text-white font-family-bellefair"
+      className="min-h-screen  w-full md:px-20 px-6 md:py-20 py-8 text-white font-family-bellefair"
     >
       {/* SECTION HEADER */}
       <div className="flex flex-col   items-center text-center mb-16">

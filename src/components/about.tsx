@@ -34,7 +34,7 @@ export default function About() {
   return (
     <motion.section
       id="about"
-      className="min-h-screen border border-red-500 lg:pb-20 z-10 w-full px-10 pt-20 md:py-12 lg:py-20 pb-10 md:pb-4  text-white font-family-bellefair"
+      className="min-h-screen  lg:pb-20 z-10 w-full px-10 pt-20 md:py-12 lg:py-20 pb-10 md:pb-4  text-white font-family-bellefair"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
