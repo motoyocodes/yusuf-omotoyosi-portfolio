@@ -57,7 +57,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen md:px-20 px-5 md:py-20 pt-20  text-white font-family-bellefair flex flex-col items-center"
+      className=" md:px-20 px-5 md:py-20 pt-20  text-white font-family-bellefair flex flex-col items-center"
     >
       {/* CONTACT HEADER */}
       <div className="flex items-center gap-3 md:gap-6 md:mb-16 mb-8  w-full">

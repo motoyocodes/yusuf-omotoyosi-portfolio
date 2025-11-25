@@ -33,7 +33,7 @@ function Hero() {
     <section
       id="home"
       className="relative z-10 flex flex-col-reverse xl:flex-row justify-between items-center 
-      px-6 md:px-20 lg:px-30 py-10 md:py-32 lg:py-40 gap-16 md:gap-10 min-h-screen"
+      px-6 md:px-20 lg:px-30 py-10 md:py-32 lg:py-40 gap-16 md:gap-10 "
     >
       {/* Left Side - Same as before */}
       <div className="flex flex-col text-center md:text-left items-center md:items-start">

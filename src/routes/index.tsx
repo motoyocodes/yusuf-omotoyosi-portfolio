@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
 function Homepage() {
   return (
     <div
-      className="relative w-full min-h-screen"
+      className="relative w-full "
       style={{
         background: `
           radial-gradient(ellipse 110% 70% at 25% 80%, rgba(147, 51, 234, 0.12), transparent 55%),
