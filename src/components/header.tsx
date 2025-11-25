@@ -31,8 +31,8 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full left-0 right-0 z-50 px-6 py-6 bg-black/10 backdrop-blur-sm">
-      <div className="max-w-[1440px] ">
+    <nav className="fixed top-0 w-screen left-0 right-0 z-50 px-6 py-6 bg-black/10 backdrop-blur-sm border-b border-white/5">
+      <div className="max-w-[1440px] mx-auto">
         <div className="flex justify-between items-center xl:px-10">
           {/* LEFT: Shimmer Text */}
           <div>
