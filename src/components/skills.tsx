@@ -93,7 +93,7 @@ export default function Skills() {
         viewport={{ once: true, amount: 0.2 }}
         className="
         flex flex-col items-center gap-2 
-        p-3 sm:p-4 md:p-4 
+        p-3 sm:p-4 md:p-2.5 
         rounded-xl
         bg-white/5 
         border border-pink-500/40 
@@ -103,10 +103,10 @@ export default function Skills() {
         whileHover={{ scale: 1.05 }}
       >
         <tech.icon
-          className="text-3xl sm:text-4xl md:text-[48px]"
+          className="text-3xl md:text-4xl"
           style={{ color: tech.color }}
         />
-        <span className="text-white text-sm sm:text-lg md:text-xl font-family-bellefair">
+        <span className="text-white text-sm sm:text-lg md:text-lg font-family-bellefair">
           {tech.name}
         </span>
       </motion.div>
