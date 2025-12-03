@@ -20,9 +20,15 @@ import {
   SiVite,
   SiNetlify,
   SiVercel,
+  SiFirebase,
+  SiSequelize,
+  SiPostman,
 } from "react-icons/si";
 import { Code } from "lucide-react";
 import { motion, easeOut } from "framer-motion";
+import { BiBarChart } from "react-icons/bi";
+import { AiOutlineForm } from "react-icons/ai";
+import { TbSquareRoundedChevronRight } from "react-icons/tb";
 
 const frontend = [
   { name: "HTML", icon: SiHtml5, color: "#E44D26" },
@@ -34,6 +40,9 @@ const frontend = [
   { name: "Tailwind", icon: SiTailwindcss, color: "#38BDF8" },
   { name: "Framer Motion", icon: SiFramer, color: "#DD00FF" },
   { name: "Redux", icon: SiRedux, color: "#764ABC" },
+  { name: "Recharts", icon: BiBarChart, color: "#FF7300" },
+  { name: "React Hook Form", icon: AiOutlineForm, color: "#EC5990" },
+  { name: "ShadCN UI", icon: TbSquareRoundedChevronRight, color: "white" },
 ];
 
 const backend = [
@@ -43,6 +52,9 @@ const backend = [
   { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
   { name: "MySQL", icon: SiMysql, color: "#00758F" },
   { name: "Auth.js", icon: SiAuth0, color: "#EB5424" },
+  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  { name: "Sequelize", icon: SiSequelize, color: "#52B0E7" },
+  { name: "Postman", icon: SiPostman, color: "#FF6C37" },
 ];
 
 const tools = [

@@ -143,7 +143,7 @@ export const projects = [
     image: finedge,
     description:
       "FinEdge AI is an intelligent financial ecosystem that unifies fragmented mobile money and POS data to generate a trusted, behavior-based credit score and actionable AI coaching, directly solving the $330B credit access problem for African SMEs.",
-    liveDemo: "https://fin-edge-ai.vercel.app/dashboard",
+    liveDemo: "https://fin-edge-ai.vercel.app/",
     github: "https://github.com/FinEdgeAI-Team/FinEdge-frontend",
     features: [
       {

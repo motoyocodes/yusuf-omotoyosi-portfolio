@@ -88,7 +88,7 @@ export default function About() {
         <motion.div className="flex sm:flex-row gap-4 sm:gap-6 mt-12">
           {/* Download CV */}
           <motion.a
-            href="/cv.pdf"
+            href="/resume.pdf"
             target="blank"
             className="
       px-4 sm:px-6 py-3 sm:py-1 text-lg  sm:text-xl rounded-xl font-medium
