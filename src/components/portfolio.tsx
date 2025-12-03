@@ -10,7 +10,15 @@ import {
   SiRedux,
   SiFramer,
 } from "react-icons/si";
-import { omniwell, portfolio, urbn99, nextjs, birthday } from "@/assets";
+import {
+  omniwell,
+  portfolio,
+  urbn99,
+  nextjs,
+  birthday,
+  finedge,
+} from "@/assets";
+import { BiBarChart } from "react-icons/bi";
 
 export const projects = [
   {
@@ -131,6 +139,91 @@ export const projects = [
   },
   {
     id: "3",
+    name: "FinEdge-AI",
+    image: finedge,
+    description:
+      "FinEdge AI is an intelligent financial ecosystem that unifies fragmented mobile money and POS data to generate a trusted, behavior-based credit score and actionable AI coaching, directly solving the $330B credit access problem for African SMEs.",
+    liveDemo: "https://fin-edge-ai.vercel.app/dashboard",
+    github: "https://github.com/FinEdgeAI-Team/FinEdge-frontend",
+    features: [
+      {
+        name: "Unified Data Ingestion",
+        description:
+          "Connects fragmented data sources (Mobile Money, POS, CSV) into one secure platform for holistic analysis and credit scoring.",
+      },
+      {
+        name: "Behavioral Credit Score",
+        description:
+          "Generates a dynamic, verifiable FinEdge Credit Score (Bronze/Silver/Gold) based purely on transaction history and cash flow stability.",
+      },
+      {
+        name: "AI Coach: Dynamic Advice",
+        description:
+          "Provides real-time, actionable financial insights (e.g., expense leakage alerts, cash buffer recommendations) powered by custom classification logic.",
+      },
+      {
+        name: "Cash Flow Stability Chart",
+        description:
+          "Visualizes weekly Inflow vs. Outflow trends, essential for predicting liquidity risk and validating repayment capacity for lenders.",
+      },
+      {
+        name: "Credit Tiering & MoM Progress",
+        description:
+          "Gamifies financial health by displaying Credit Tiers and Month-over-Month progress indicators on key metrics.",
+      },
+      {
+        name: "Multi-View Command Center",
+        description:
+          "Organizes complex tools (Analytics, Credit & Action, AI Coach) into an intuitive, navigable, dark-mode dashboard interface.",
+      },
+    ],
+    techStack: [
+      {
+        name: "React",
+        icon: FaReact,
+        color: "#61DAFB",
+        description: "Frontend UI",
+      },
+      {
+        name: "TailwindCSS",
+        icon: SiTailwindcss,
+        color: "#38BDF8",
+        description: "Styling & Layout",
+      },
+      {
+        name: "TypeScript",
+        icon: SiTypescript,
+        color: "#3178C6",
+        description: "Type-safe coding",
+      },
+      {
+        name: "Vite",
+        icon: SiVite,
+        color: "#646CFF",
+        description: "Development build tool",
+      },
+      {
+        name: "Framer Motion",
+        icon: SiFramer,
+        color: "#DD00FF",
+        description: "Animations",
+      },
+      {
+        name: "Netlify",
+        icon: SiNetlify,
+        color: "#00C7B7",
+        description: "Deployment",
+      },
+      {
+        name: "Recharts",
+        icon: BiBarChart,
+        color: "#FF7300", // Recharts' default orange accent
+        description: "React Charting Library",
+      },
+    ],
+  },
+  {
+    id: "4",
     name: "Urbn99",
     image: urbn99,
     description:
@@ -207,7 +300,7 @@ export const projects = [
     ],
   },
   {
-    id: "4",
+    id: "5",
     name: "Todo App",
     image: nextjs,
     description:
@@ -259,7 +352,7 @@ export const projects = [
     ],
   },
   {
-    id: "5",
+    id: "6",
     name: "Birthday Website",
     image: birthday,
     description:
