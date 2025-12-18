@@ -4,5 +4,6 @@ import birthday from "./birthday.png";
 import nextjs from "./nextjs.png";
 import omniwell from "./omniwell.png";
 import finedge from "./finedge.png";
+import gitwrap from "./gitwrap.png";
 
-export { portfolio, urbn99, birthday, nextjs, omniwell, finedge };
+export { portfolio, urbn99, birthday, nextjs, omniwell, finedge, gitwrap };

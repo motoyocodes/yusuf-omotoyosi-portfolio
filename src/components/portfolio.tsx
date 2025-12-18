@@ -9,6 +9,8 @@ import {
   SiSupabase,
   SiRedux,
   SiFramer,
+  SiGraphql,
+  SiVercel,
 } from "react-icons/si";
 import {
   omniwell,
@@ -17,12 +19,78 @@ import {
   nextjs,
   birthday,
   finedge,
+  gitwrap,
 } from "@/assets";
 import { BiBarChart } from "react-icons/bi";
 
 export const projects = [
   {
     id: "1",
+    name: "GitWrap 2025",
+    image: gitwrap, // Make sure you import this image variable at the top
+    description:
+      "A developer-focused visualization tool that transforms GitHub contribution data into a 'Spotify Wrapped' style year-in-review. It analyzes coding habits to generate personality archetypes, data-driven roasts, and shareable social receipts.",
+    liveDemo: "https://gitwrap-2025-topaz.vercel.app/", // Updated to your Vercel link
+    github: "https://github.com/motoyocodes/gitwrap",
+    features: [
+      {
+        name: "GitHub GraphQL API",
+        description:
+          "Fetches complex contribution data, commit history, and language stats efficiently.",
+      },
+      {
+        name: "Developer Personas",
+        description:
+          "Algorithms that classify users into archetypes (e.g., 'Vampire Coder') based on commit timestamps.",
+      },
+      {
+        name: "Shareable Receipts",
+        description:
+          "Generates downloadable, social-media-ready images of your stats using html2canvas.",
+      },
+    ],
+    techStack: [
+      {
+        name: "Next.js 15",
+        icon: SiNextdotjs,
+        color: "white",
+        description: "App Router & Server Actions",
+      },
+      {
+        name: "TypeScript",
+        icon: SiTypescript,
+        color: "#3178C6",
+        description: "Type-safe logic",
+      },
+      {
+        name: "TailwindCSS",
+        icon: SiTailwindcss,
+        color: "#38BDF8",
+        description: "Styling & Responsive Design",
+      },
+      {
+        name: "GraphQL",
+        icon: SiGraphql,
+        color: "#E10098",
+        description: "Data Fetching",
+      },
+      {
+        name: "Framer Motion",
+        icon: SiFramer,
+        color: "#0055FF",
+        description: "Animations & Transitions",
+      },
+      {
+        name: "Vercel",
+        icon: SiVercel,
+        color: "white",
+        description: "Deployment & CI/CD",
+      },
+    ],
+  },
+
+  {
+    id: "2",
     name: "Omniwell",
     image: omniwell,
     description:
@@ -80,7 +148,7 @@ export const projects = [
     ],
   },
   {
-    id: "2",
+    id: "3",
     name: "Developer Portfolio",
     image: portfolio,
     description:
@@ -138,7 +206,7 @@ export const projects = [
     ],
   },
   {
-    id: "3",
+    id: "4",
     name: "FinEdge-AI",
     image: finedge,
     description:
@@ -223,7 +291,7 @@ export const projects = [
     ],
   },
   {
-    id: "4",
+    id: "5",
     name: "Urbn99",
     image: urbn99,
     description:
@@ -300,7 +368,7 @@ export const projects = [
     ],
   },
   {
-    id: "5",
+    id: "6",
     name: "Todo App",
     image: nextjs,
     description:
@@ -352,7 +420,7 @@ export const projects = [
     ],
   },
   {
-    id: "6",
+    id: "7",
     name: "Birthday Website",
     image: birthday,
     description:
