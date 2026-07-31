@@ -16,7 +16,6 @@ import {
   omniwell,
   portfolio,
   urbn99,
-  nextjs,
   birthday,
   finedge,
   gitwrap,
