@@ -20,6 +20,7 @@ import {
   birthday,
   finedge,
   gitwrap,
+  naqssunilag,
 } from "@/assets";
 import { BiBarChart } from "react-icons/bi";
 
@@ -88,9 +89,67 @@ export const projects = [
       },
     ],
   },
-
   {
     id: "2",
+    name: "NaqssUnilag",
+    image: naqssunilag,
+    description:
+      "A  website for the department of quantity surveying, university of lagos, designed to provide students with information and resources.",
+    liveDemo: "https://naqss-unilag.netlify.app",
+    github: "https://github.com/motoyocodes/naqss-unilag.git",
+    features: [
+      { name: "Responsive Design", description: "Looks great on all devices." },
+      {
+        name: "Interactive UI",
+        description: "Smooth animations and feedback.",
+      },
+      {
+        name: "Fast Performance",
+        description: "Optimized for speed and usability.",
+      },
+    ],
+    techStack: [
+      {
+        name: "Next.js 15",
+        icon: SiNextdotjs,
+        color: "white",
+        description: "App Router & Server Actions",
+      },
+      {
+        name: "TailwindCSS",
+        icon: SiTailwindcss,
+        color: "#38BDF8",
+        description: "Styling & Layout",
+      },
+      {
+        name: "TypeScript",
+        icon: SiTypescript,
+        color: "#3178C6",
+        description: "Type-safe coding",
+      },
+      {
+        name: "Vite",
+        icon: SiVite,
+        color: "#646CFF",
+        description: "Development build tool",
+      },
+      {
+        name: "Framer Motion",
+        icon: SiFramer,
+        color: "#DD00FF",
+        description: "Animations",
+      },
+      {
+        name: "Netlify",
+        icon: SiNetlify,
+        color: "#00C7B7",
+        description: "Deployment",
+      },
+    ],
+  },
+
+  {
+    id: "3",
     name: "Omniwell",
     image: omniwell,
     description:
@@ -148,7 +207,7 @@ export const projects = [
     ],
   },
   {
-    id: "3",
+    id: "4",
     name: "Developer Portfolio",
     image: portfolio,
     description:
@@ -206,7 +265,7 @@ export const projects = [
     ],
   },
   {
-    id: "4",
+    id: "5",
     name: "FinEdge-AI",
     image: finedge,
     description:
@@ -291,7 +350,7 @@ export const projects = [
     ],
   },
   {
-    id: "5",
+    id: "6",
     name: "Urbn99",
     image: urbn99,
     description:
@@ -367,60 +426,9 @@ export const projects = [
       },
     ],
   },
+
   {
     id: "6",
-    name: "Todo App",
-    image: nextjs,
-    description:
-      "An intelligent task-management application enhanced with AI assistance, offering smart suggestions, streamlined organization, and an engaging UI.",
-    liveDemo: "https://nextjs-mytodoapp-yusuf-omotoyosi.netlify.app/",
-    github: "https://github.com/motoyocodes/nextjs-todoapp-yusuf-omotoyosi.git",
-    features: [
-      {
-        name: "Task Management",
-        description: "Add, edit, delete, and complete tasks easily.",
-      },
-      { name: "AI Assistance", description: "Smart suggestions for tasks." },
-      {
-        name: "User-Friendly UI",
-        description: "Clean and responsive interface.",
-      },
-    ],
-    techStack: [
-      {
-        name: "Next.js",
-        icon: SiNextdotjs,
-        color: "white",
-        description: "Frontend & SSR",
-      },
-      {
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        color: "#38BDF8",
-        description: "Styling & Layout",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "#3178C6",
-        description: "Type-safe coding",
-      },
-      {
-        name: "Vite",
-        icon: SiVite,
-        color: "#646CFF",
-        description: "Development build tool",
-      },
-      {
-        name: "Netlify",
-        icon: SiNetlify,
-        color: "#00C7B7",
-        description: "Deployment",
-      },
-    ],
-  },
-  {
-    id: "7",
     name: "Birthday Website",
     image: birthday,
     description:

@@ -5,5 +5,15 @@ import nextjs from "./nextjs.png";
 import omniwell from "./omniwell.png";
 import finedge from "./finedge.png";
 import gitwrap from "./gitwrap.png";
+import naqssunilag from "./naqssunilag.png";
 
-export { portfolio, urbn99, birthday, nextjs, omniwell, finedge, gitwrap };
+export {
+  portfolio,
+  urbn99,
+  birthday,
+  nextjs,
+  omniwell,
+  finedge,
+  gitwrap,
+  naqssunilag,
+};
