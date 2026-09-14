@@ -16,8 +16,8 @@ import {
   omniwell,
   portfolio,
   urbn99,
-  birthday,
   finedge,
+  hayven,
   gitwrap,
   naqssunilag,
 } from "@/assets";
@@ -90,6 +90,64 @@ export const projects = [
   },
   {
     id: "2",
+    name: "Hayven",
+    image: hayven,
+    description:
+      "A responsive healthcare platform connecting Nigerian families with verified paediatric therapists, featuring therapist discovery, matching, booking, user dashboards, and virtual sessions.",
+    liveDemo: "https://hayven.com.ng/",
+    github: "https://github.com/motoyocodes/naqss-unilag.git",
+    features: [
+      { name: "Responsive Design", description: "Looks great on all devices." },
+      {
+        name: "Interactive UI",
+        description: "Smooth animations and feedback.",
+      },
+      {
+        name: "Fast Performance",
+        description: "Optimized for speed and usability.",
+      },
+    ],
+    techStack: [
+      {
+        name: "Next.js 15",
+        icon: SiNextdotjs,
+        color: "white",
+        description: "App Router & Server Actions",
+      },
+      {
+        name: "TailwindCSS",
+        icon: SiTailwindcss,
+        color: "#38BDF8",
+        description: "Styling & Layout",
+      },
+      {
+        name: "TypeScript",
+        icon: SiTypescript,
+        color: "#3178C6",
+        description: "Type-safe coding",
+      },
+      {
+        name: "Vite",
+        icon: SiVite,
+        color: "#646CFF",
+        description: "Development build tool",
+      },
+      {
+        name: "Framer Motion",
+        icon: SiFramer,
+        color: "#DD00FF",
+        description: "Animations",
+      },
+      {
+        name: "Supabase",
+        icon: SiSupabase,
+        color: "#3ECF8E",
+        description: "Backend DB & Auth",
+      },
+    ],
+  },
+  {
+    id: "3",
     name: "NaqssUnilag",
     image: naqssunilag,
     description:
@@ -148,7 +206,7 @@ export const projects = [
   },
 
   {
-    id: "3",
+    id: "4",
     name: "Omniwell",
     image: omniwell,
     description:
@@ -206,7 +264,7 @@ export const projects = [
     ],
   },
   {
-    id: "4",
+    id: "5",
     name: "Developer Portfolio",
     image: portfolio,
     description:
@@ -264,7 +322,7 @@ export const projects = [
     ],
   },
   {
-    id: "5",
+    id: "6",
     name: "FinEdge-AI",
     image: finedge,
     description:
@@ -349,7 +407,7 @@ export const projects = [
     ],
   },
   {
-    id: "6",
+    id: "7",
     name: "Urbn99",
     image: urbn99,
     description:
@@ -422,59 +480,6 @@ export const projects = [
         icon: SiRedux,
         color: "#764ABC",
         description: "State Management",
-      },
-    ],
-  },
-
-  {
-    id: "6",
-    name: "Birthday Website",
-    image: birthday,
-    description:
-      "A personalized celebratory webpage created for a client, featuring interactive elements, animations, and a warm, memorable user experience.",
-    liveDemo: "https://faith-etomi-williams.netlify.app/",
-    github: "https://github.com/motoyocodes/faith-etomi-williams.git",
-    features: [
-      {
-        name: "Interactive Animations",
-        description: "Fun animations and effects for a memorable experience.",
-      },
-      {
-        name: "Personalization",
-        description: "Customized messages and images for the client.",
-      },
-      { name: "Responsive Design", description: "Works well on all devices." },
-    ],
-    techStack: [
-      {
-        name: "React",
-        icon: FaReact,
-        color: "#61DAFB",
-        description: "Frontend UI",
-      },
-      {
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        color: "#38BDF8",
-        description: "Styling & Layout",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "#3178C6",
-        description: "Type-safe coding",
-      },
-      {
-        name: "Vite",
-        icon: SiVite,
-        color: "#646CFF",
-        description: "Development build tool",
-      },
-      {
-        name: "Netlify",
-        icon: SiNetlify,
-        color: "#00C7B7",
-        description: "Deployment",
       },
     ],
   },
