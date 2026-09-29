@@ -7,7 +7,8 @@ import {
   SiNextdotjs,
   SiNetlify,
   SiSupabase,
-  SiRedux,
+  SiThreedotjs,
+  SiGreensock,
   SiFramer,
   SiGraphql,
   SiVercel,
@@ -15,40 +16,70 @@ import {
 import {
   omniwell,
   portfolio,
-  urbn99,
-  finedge,
+
   hayven,
   gitwrap,
   naqssunilag,
+  adali,
 } from "@/assets";
-import { BiBarChart } from "react-icons/bi";
 
 export const projects = [
   {
     id: "1",
-    name: "GitWrap 2025",
-    image: gitwrap, // Make sure you import this image variable at the top
-    description:
-      "A developer-focused visualization tool that transforms GitHub contribution data into a 'Spotify Wrapped' style year-in-review. It analyzes coding habits to generate personality archetypes, data-driven roasts, and shareable social receipts.",
-    liveDemo: "https://gitwrap-2025-topaz.vercel.app/", // Updated to your Vercel link
-    github: "https://github.com/motoyocodes/gitwrap",
-    features: [
+    name: "Adali",
+    image: adali,
+    description: "A premium fashion e-commerce experience built to feel like a digital atelier — GSAP-driven scroll storytelling, a Three.js hardware close-up, and color-swapping product pages, backed by a real Supabase catalog and Stripe checkout across Men's and Women's collections.",
+    liveDemo: "https://adali.netlify.app/",
+    github: "https://github.com/motoyocodes/Adali.git",
+
+    techStack: [
       {
-        name: "GitHub GraphQL API",
-        description:
-          "Fetches complex contribution data, commit history, and language stats efficiently.",
+        name: "Next.js 15",
+        icon: SiNextdotjs,
+        color: "white",
+        description: "App Router & Server Actions",
       },
       {
-        name: "Developer Personas",
-        description:
-          "Algorithms that classify users into archetypes (e.g., 'Vampire Coder') based on commit timestamps.",
+        name: "TypeScript",
+        icon: SiTypescript,
+        color: "#3178C6",
+        description: "Type-safe logic",
       },
       {
-        name: "Shareable Receipts",
-        description:
-          "Generates downloadable, social-media-ready images of your stats using html2canvas.",
+        name: "TailwindCSS",
+        icon: SiTailwindcss,
+        color: "#38BDF8",
+        description: "Styling & Responsive Design",
+      },
+      {
+        name: "Three.js",
+        icon: SiThreedotjs,
+        color: "white",
+        description: "3D Hardware Close-up",
+      },
+      {
+        name: "GSAP",
+        icon: SiGreensock,
+        color: "#88CE02",
+        description: "Scroll Storytelling & Motion",
+      },
+      {
+        name: "Netlify",
+        icon: SiNetlify,
+        color: "#00C7B7",
+        description: "Deployment",
       },
     ],
+  },
+  {
+    id: "2",
+    name: "GitWrap 2025",
+    image: gitwrap,
+    description:
+      "A developer-focused visualization tool that transforms GitHub contribution data into a 'Spotify Wrapped' style year-in-review. It analyzes coding habits to generate personality archetypes, data-driven roasts, and shareable social receipts.",
+    liveDemo: "https://gitwrap-2025-topaz.vercel.app/",
+    github: "https://github.com/motoyocodes/gitwrap",
+
     techStack: [
       {
         name: "Next.js 15",
@@ -89,24 +120,14 @@ export const projects = [
     ],
   },
   {
-    id: "2",
+    id: "3",
     name: "Hayven",
     image: hayven,
     description:
       "A responsive healthcare platform connecting Nigerian families with verified paediatric therapists, featuring therapist discovery, matching, booking, user dashboards, and virtual sessions.",
     liveDemo: "https://hayven.com.ng/",
     github: "https://github.com/motoyocodes/naqss-unilag.git",
-    features: [
-      { name: "Responsive Design", description: "Looks great on all devices." },
-      {
-        name: "Interactive UI",
-        description: "Smooth animations and feedback.",
-      },
-      {
-        name: "Fast Performance",
-        description: "Optimized for speed and usability.",
-      },
-    ],
+
     techStack: [
       {
         name: "Next.js 15",
@@ -127,10 +148,16 @@ export const projects = [
         description: "Type-safe coding",
       },
       {
-        name: "Vite",
-        icon: SiVite,
-        color: "#646CFF",
-        description: "Development build tool",
+        name: "Supabase",
+        icon: SiSupabase,
+        color: "#3ECF8E",
+        description: "Backend DB & Auth",
+      },
+      {
+        name: "Netlify",
+        icon: SiNetlify,
+        color: "#00C7B7",
+        description: "Deployment",
       },
       {
         name: "Framer Motion",
@@ -147,24 +174,14 @@ export const projects = [
     ],
   },
   {
-    id: "3",
+    id: "4",
     name: "NaqssUnilag",
     image: naqssunilag,
     description:
       "A  website for the department of quantity surveying, university of lagos, designed to provide students with information and resources.",
     liveDemo: "https://naqss-unilag.netlify.app",
     github: "https://github.com/motoyocodes/naqss-unilag.git",
-    features: [
-      { name: "Responsive Design", description: "Looks great on all devices." },
-      {
-        name: "Interactive UI",
-        description: "Smooth animations and feedback.",
-      },
-      {
-        name: "Fast Performance",
-        description: "Optimized for speed and usability.",
-      },
-    ],
+
     techStack: [
       {
         name: "Next.js 15",
@@ -206,82 +223,14 @@ export const projects = [
   },
 
   {
-    id: "4",
+    id: "5",
     name: "Omniwell",
     image: omniwell,
     description:
       "A modern and responsive fitness website designed for a health and wellness brand, featuring structured content, clean UI, and an engaging user experience.",
     liveDemo: "https://omniwell.netlify.app/",
     github: "https://github.com/motoyocodes/OmniWell.git",
-    features: [
-      { name: "Responsive Design", description: "Looks great on all devices." },
-      {
-        name: "Interactive UI",
-        description: "Smooth animations and feedback.",
-      },
-      {
-        name: "Fast Performance",
-        description: "Optimized for speed and usability.",
-      },
-    ],
-    techStack: [
-      {
-        name: "React",
-        icon: FaReact,
-        color: "#61DAFB",
-        description: "Frontend UI",
-      },
-      {
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        color: "#38BDF8",
-        description: "Styling & Layout",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "#3178C6",
-        description: "Type-safe coding",
-      },
-      {
-        name: "Vite",
-        icon: SiVite,
-        color: "#646CFF",
-        description: "Development build tool",
-      },
-      {
-        name: "Framer Motion",
-        icon: SiFramer,
-        color: "#DD00FF",
-        description: "Animations",
-      },
-      {
-        name: "Netlify",
-        icon: SiNetlify,
-        color: "#00C7B7",
-        description: "Deployment",
-      },
-    ],
-  },
-  {
-    id: "5",
-    name: "Developer Portfolio",
-    image: portfolio,
-    description:
-      "A sleek and interactive portfolio built to showcase a web developer’s skills, projects, and professional journey through a clean layout and smooth navigation.",
-    liveDemo: "https://yusuf-omotoyosi-port.netlify.app/",
-    github: "https://github.com/motoyocodes/yusuf-omotoyosi-portfolio.git",
-    features: [
-      { name: "Responsive Layout", description: "Looks great on all devices." },
-      {
-        name: "Interactive Animations",
-        description: "Smooth scrolling and hover effects.",
-      },
-      {
-        name: "Easy Navigation",
-        description: "Well-structured and intuitive UX.",
-      },
-    ],
+
     techStack: [
       {
         name: "React",
@@ -323,44 +272,13 @@ export const projects = [
   },
   {
     id: "6",
-    name: "FinEdge-AI",
-    image: finedge,
+    name: "Developer Portfolio",
+    image: portfolio,
     description:
-      "FinEdge AI is an intelligent financial ecosystem that unifies fragmented mobile money and POS data to generate a trusted, behavior-based credit score and actionable AI coaching, directly solving the $330B credit access problem for African SMEs.",
-    liveDemo: "https://fin-edge-ai.vercel.app/",
-    github: "https://github.com/FinEdgeAI-Team/FinEdge-frontend",
-    features: [
-      {
-        name: "Unified Data Ingestion",
-        description:
-          "Connects fragmented data sources (Mobile Money, POS, CSV) into one secure platform for holistic analysis and credit scoring.",
-      },
-      {
-        name: "Behavioral Credit Score",
-        description:
-          "Generates a dynamic, verifiable FinEdge Credit Score (Bronze/Silver/Gold) based purely on transaction history and cash flow stability.",
-      },
-      {
-        name: "AI Coach: Dynamic Advice",
-        description:
-          "Provides real-time, actionable financial insights (e.g., expense leakage alerts, cash buffer recommendations) powered by custom classification logic.",
-      },
-      {
-        name: "Cash Flow Stability Chart",
-        description:
-          "Visualizes weekly Inflow vs. Outflow trends, essential for predicting liquidity risk and validating repayment capacity for lenders.",
-      },
-      {
-        name: "Credit Tiering & MoM Progress",
-        description:
-          "Gamifies financial health by displaying Credit Tiers and Month-over-Month progress indicators on key metrics.",
-      },
-      {
-        name: "Multi-View Command Center",
-        description:
-          "Organizes complex tools (Analytics, Credit & Action, AI Coach) into an intuitive, navigable, dark-mode dashboard interface.",
-      },
-    ],
+      "A sleek and interactive portfolio built to showcase a web developer’s skills, projects, and professional journey through a clean layout and smooth navigation.",
+    liveDemo: "https://yusuf-omotoyosi-port.netlify.app/",
+    github: "https://github.com/motoyocodes/yusuf-omotoyosi-portfolio.git",
+
     techStack: [
       {
         name: "React",
@@ -398,91 +316,9 @@ export const projects = [
         color: "#00C7B7",
         description: "Deployment",
       },
-      {
-        name: "Recharts",
-        icon: BiBarChart,
-        color: "#FF7300", // Recharts' default orange accent
-        description: "React Charting Library",
-      },
     ],
   },
-  {
-    id: "7",
-    name: "Urbn99",
-    image: urbn99,
-    description:
-      "A contemporary e-commerce website crafted for a streetwear fashion brand, emphasizing bold visuals, modern aesthetics, and an intuitive shopping experience.",
-    liveDemo: "https://urbn99.netlify.app/",
-    github: "https://github.com/motoyocodes/urbn99.git",
-    features: [
-      {
-        name: "E-commerce Functionality",
-        description: "Browse, add to cart, and checkout seamlessly.",
-      },
-      {
-        name: "Interactive UI",
-        description: "Smooth animations and responsive design.",
-      },
-      {
-        name: "Performance Optimized",
-        description: "Fast page loads and transitions.",
-      },
-      {
-        name: "Performance Optimized",
-        description: "Fast page loads and transitions.",
-      },
-    ],
-    techStack: [
-      {
-        name: "React",
-        icon: FaReact,
-        color: "#61DAFB",
-        description: "Frontend UI",
-      },
-      {
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        color: "#38BDF8",
-        description: "Styling & Layout",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "#3178C6",
-        description: "Type-safe coding",
-      },
-      {
-        name: "Vite",
-        icon: SiVite,
-        color: "#646CFF",
-        description: "Development build tool",
-      },
-      {
-        name: "Netlify",
-        icon: SiNetlify,
-        color: "#00C7B7",
-        description: "Deployment",
-      },
-      {
-        name: "Framer Motion",
-        icon: SiFramer,
-        color: "#DD00FF",
-        description: "Animations",
-      },
-      {
-        name: "Supabase",
-        icon: SiSupabase,
-        color: "#3ECF8E",
-        description: "Backend DB & Auth",
-      },
-      {
-        name: "Redux",
-        icon: SiRedux,
-        color: "#764ABC",
-        description: "State Management",
-      },
-    ],
-  },
+
 ];
 
 const containerVariants = {

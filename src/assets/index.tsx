@@ -6,6 +6,7 @@ import finedge from "./finedge.png";
 import gitwrap from "./gitwrap.png";
 import naqssunilag from "./naqssunilag.png";
 import hayven from "./hayven.png";
+import adali from "./adali.png";
 
 export {
   portfolio,
@@ -16,4 +17,6 @@ export {
   gitwrap,
   naqssunilag,
   hayven,
+  adali,
 };
+
