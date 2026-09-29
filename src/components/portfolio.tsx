@@ -77,7 +77,7 @@ export const projects = [
     image: gitwrap,
     description:
       "A developer-focused visualization tool that transforms GitHub contribution data into a 'Spotify Wrapped' style year-in-review. It analyzes coding habits to generate personality archetypes, data-driven roasts, and shareable social receipts.",
-    liveDemo: "https://gitwrap-2025-topaz.vercel.app/",
+    liveDemo: "https://gitwrap-mu.vercel.app/",
     github: "https://github.com/motoyocodes/gitwrap",
 
     techStack: [
