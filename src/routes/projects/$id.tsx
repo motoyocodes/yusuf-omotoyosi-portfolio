@@ -63,55 +63,6 @@ export default function ProjectDetails() {
           </p>
         </motion.div>
 
-        {/* FEATURES SECTION */}
-        {project.features && (
-          <div className="mb-24">
-            {/* Section Header */}
-            <div className="flex items-center gap-6 mb-12 w-full">
-              <motion.div
-                initial={{ width: 0, opacity: 0 }}
-                whileInView={{ width: "100%", opacity: 1 }}
-                transition={{ duration: 0.7 }}
-                className="flex-1 h-[3px] bg-linear-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full"
-              />
-
-              <motion.h2
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-5xl font-bold text-center"
-              >
-                Features
-              </motion.h2>
-
-              <motion.div
-                initial={{ width: 0, opacity: 0 }}
-                whileInView={{ width: "100%", opacity: 1 }}
-                transition={{ duration: 0.7 }}
-                className="flex-1 h-[3px] bg-linear-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full"
-              />
-            </div>
-
-            {/* Features List */}
-            <div className="flex flex-col gap-6">
-              {project.features.map((feature, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-white/5 backdrop-blur-md p-6 rounded-xl border border-purple-500/20"
-                >
-                  <h3 className="text-3xl font-bold">{feature.name}</h3>
-                  <p className="text-white/80 text-xl mt-2">
-                    {feature.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* TECH STACK */}
         {project.techStack.map((tech, i) => {
           const Icon = tech.icon; // Assign the icon component
