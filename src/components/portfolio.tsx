@@ -73,7 +73,7 @@ export const projects = [
   },
   {
     id: "2",
-    name: "GitWrap 2025",
+    name: "GitWrap ",
     image: gitwrap,
     description:
       "A developer-focused visualization tool that transforms GitHub contribution data into a 'Spotify Wrapped' style year-in-review. It analyzes coding habits to generate personality archetypes, data-driven roasts, and shareable social receipts.",
