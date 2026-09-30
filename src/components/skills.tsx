@@ -1,3 +1,7 @@
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   SiHtml5,
   SiCss3,
@@ -21,170 +25,201 @@ import {
   SiNetlify,
   SiVercel,
   SiFirebase,
-  SiSequelize,
   SiPostman,
+  SiThreedotjs,
+  SiGreensock,
+  SiGraphql,
 } from "react-icons/si";
-import { Code } from "lucide-react";
-import { motion, easeOut } from "framer-motion";
+import { Code, Cpu, Layers, Wrench, Sparkles } from "lucide-react";
 import { BiBarChart } from "react-icons/bi";
 import { AiOutlineForm } from "react-icons/ai";
 import { TbSquareRoundedChevronRight } from "react-icons/tb";
 
-const frontend = [
-  { name: "HTML", icon: SiHtml5, color: "#E44D26" },
-  { name: "CSS", icon: SiCss3, color: "#1572B6" },
-  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-  { name: "ReactJS", icon: SiReact, color: "#61DAFB" },
-  { name: "NextJS", icon: SiNextdotjs, color: "white" },
-  { name: "Tailwind", icon: SiTailwindcss, color: "#38BDF8" },
-  { name: "Framer Motion", icon: SiFramer, color: "#DD00FF" },
-  { name: "Redux", icon: SiRedux, color: "#764ABC" },
-  { name: "Recharts", icon: BiBarChart, color: "#FF7300" },
-  { name: "React Hook Form", icon: AiOutlineForm, color: "#EC5990" },
-  { name: "ShadCN UI", icon: TbSquareRoundedChevronRight, color: "white" },
+gsap.registerPlugin(ScrollTrigger);
+
+interface SkillItem {
+  name: string;
+  category: "frontend" | "backend" | "tools" | "creative";
+  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+  color: string;
+  tag: string;
+}
+
+const allSkills: SkillItem[] = [
+  // Creative & 3D
+  { name: "Three.js", category: "creative", icon: SiThreedotjs, color: "#FFFFFF", tag: "3D & WebGL" },
+  { name: "GSAP", category: "creative", icon: SiGreensock, color: "#88CE02", tag: "Scroll & Physics" },
+  { name: "Framer Motion", category: "creative", icon: SiFramer, color: "#DD00FF", tag: "Micro-interactions" },
+
+  // Frontend
+  { name: "React 19", category: "frontend", icon: SiReact, color: "#61DAFB", tag: "Core UI" },
+  { name: "Next.js 15", category: "frontend", icon: SiNextdotjs, color: "#FFFFFF", tag: "SSR & App Router" },
+  { name: "TypeScript", category: "frontend", icon: SiTypescript, color: "#3178C6", tag: "Type Safety" },
+  { name: "TailwindCSS", category: "frontend", icon: SiTailwindcss, color: "#38BDF8", tag: "Design Systems" },
+  { name: "JavaScript", category: "frontend", icon: SiJavascript, color: "#F7DF1E", tag: "ESNext" },
+  { name: "HTML5", category: "frontend", icon: SiHtml5, color: "#E44D26", tag: "Semantic DOM" },
+  { name: "CSS3", category: "frontend", icon: SiCss3, color: "#1572B6", tag: "Modern Layouts" },
+  { name: "Redux Toolkit", category: "frontend", icon: SiRedux, color: "#764ABC", tag: "State Management" },
+  { name: "GraphQL", category: "frontend", icon: SiGraphql, color: "#E10098", tag: "Data Query" },
+  { name: "ShadCN UI", category: "frontend", icon: TbSquareRoundedChevronRight, color: "#FFFFFF", tag: "Components" },
+  { name: "React Hook Form", category: "frontend", icon: AiOutlineForm, color: "#EC5990", tag: "Form Validation" },
+  { name: "Recharts", category: "frontend", icon: BiBarChart, color: "#FF7300", tag: "Data Viz" },
+
+  // Backend
+  { name: "Node.js", category: "backend", icon: SiNodedotjs, color: "#3C873A", tag: "Runtime" },
+  { name: "Express", category: "backend", icon: SiExpress, color: "#FFFFFF", tag: "REST APIs" },
+  { name: "Supabase", category: "backend", icon: SiSupabase, color: "#3ECF8E", tag: "Postgres & Auth" },
+  { name: "MongoDB", category: "backend", icon: SiMongodb, color: "#47A248", tag: "NoSQL DB" },
+  { name: "MySQL", category: "backend", icon: SiMysql, color: "#00758F", tag: "Relational DB" },
+  { name: "Firebase", category: "backend", icon: SiFirebase, color: "#FFCA28", tag: "BaaS & Storage" },
+  { name: "Auth.js", category: "backend", icon: SiAuth0, color: "#EB5424", tag: "Authentication" },
+
+  // Tools & DevOps
+  { name: "Git", category: "tools", icon: SiGit, color: "#F05033", tag: "Version Control" },
+  { name: "GitHub", category: "tools", icon: SiGithub, color: "#FFFFFF", tag: "Collaboration" },
+  { name: "Vite", category: "tools", icon: SiVite, color: "#646CFF", tag: "Build Tool" },
+  { name: "Vercel", category: "tools", icon: SiVercel, color: "#FFFFFF", tag: "Edge Deploy" },
+  { name: "Netlify", category: "tools", icon: SiNetlify, color: "#00C7B7", tag: "CI/CD Hosting" },
+  { name: "Postman", category: "tools", icon: SiPostman, color: "#FF6C37", tag: "API Testing" },
+  { name: "VS Code", category: "tools", icon: Code, color: "#3EA6FF", tag: "IDE" },
+  { name: "npm", category: "tools", icon: SiNpm, color: "#CB3837", tag: "Package Registry" },
 ];
 
-const backend = [
-  { name: "Node.js", icon: SiNodedotjs, color: "#3C873A" },
-  { name: "Express", icon: SiExpress, color: "white" },
-  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-  { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
-  { name: "MySQL", icon: SiMysql, color: "#00758F" },
-  { name: "Auth.js", icon: SiAuth0, color: "#EB5424" },
-  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-  { name: "Sequelize", icon: SiSequelize, color: "#52B0E7" },
-  { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-];
-
-const tools = [
-  { name: "npm", icon: SiNpm, color: "#CB3837" },
-  { name: "Git", icon: SiGit, color: "#F05033" },
-  { name: "GitHub", icon: SiGithub, color: "white" },
-  { name: "Vite", icon: SiVite, color: "#646CFF" },
-  { name: "Netlify", icon: SiNetlify, color: "#00C7B7" },
-  { name: "Vercel", icon: SiVercel, color: "white" },
-  { name: "VSCode", icon: Code, color: "#3EA6FF" },
-];
-
-// Framer Motion variants for staggering & blur-in
-const containerVariants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.05 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.7 },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    scale: 1,
-    transition: { duration: 0.01, ease: easeOut },
-  },
-};
+const categories = [
+  { id: "all", label: "All Skills", icon: Sparkles },
+  { id: "creative", label: "3D & Motion", icon: Layers },
+  { id: "frontend", label: "Frontend", icon: Cpu },
+  { id: "backend", label: "Backend", icon: Code },
+  { id: "tools", label: "Tools & DevOps", icon: Wrench },
+] as const;
 
 export default function Skills() {
-  const renderTech = (techArray: typeof frontend) =>
-    techArray.map((tech) => (
-      <motion.div
-        key={tech.name}
-        variants={itemVariants}
-        viewport={{ once: true, amount: 0.2 }}
-        className="
-        flex flex-col items-center gap-2 
-        p-3 sm:p-4 md:p-2.5 
-        rounded-xl
-        bg-white/5 
-        border border-pink-500/40 
-        shadow-[0_0_15px_rgba(236,72,153,0.15)] 
-        cursor-pointer tilt-hover
-      "
-        whileHover={{ scale: 1.05 }}
-      >
-        <tech.icon
-          className="text-3xl md:text-4xl"
-          style={{ color: tech.color }}
-        />
-        <span className="text-white text-sm sm:text-lg md:text-lg font-family-bellefair">
-          {tech.name}
-        </span>
-      </motion.div>
-    ));
+  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const filteredSkills =
+    activeCategory === "all"
+      ? allSkills
+      : allSkills.filter((s) => s.category === activeCategory);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header line expansion
+      gsap.from(".skills-header-line", {
+        scaleX: 0,
+        transformOrigin: "center center",
+        duration: 1.0,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+    <section
       id="skills"
-      className="  w-full md:px-20 px-8 sm:px-12 xl:px-30 pt-30 pb-15 text-white font-family-bellefair"
+      ref={sectionRef}
+      className="relative z-10 w-full px-6 sm:px-10 md:px-16 lg:px-24 py-14 sm:py-16 md:py-20 text-white font-family-bellefair overflow-hidden"
     >
-      {/* TITLE + LINES */}
-      <div className="flex items-center gap-6 mb-16">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="flex items-center gap-6 mb-8">
+          <div className="skills-header-line flex-1 h-[2px] bg-linear-to-r from-transparent via-purple-500 to-pink-500 rounded-full" />
+          <div className="flex items-center gap-3 text-center">
+            <span className="text-pink-500 font-mono text-sm tracking-wider">02.</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-family-momo tracking-tight">
+              Tech Stack
+            </h2>
+          </div>
+          <div className="skills-header-line flex-1 h-[2px] bg-linear-to-r from-pink-500 via-purple-500 to-transparent rounded-full" />
+        </div>
+
+        <p className="text-center text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto mb-8">
+          A showcase of the technologies and tools I work with to build responsive,
+          engaging, and performant digital experiences.
+        </p>
+
+        {/* Category Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            const Icon = cat.icon;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`relative px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer ${isActive
+                    ? "text-white shadow-[0_0_5px_rgba(236,72,153,0.08)]"
+                    : "text-zinc-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/5"
+                  }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="active-skill-tab"
+                    className="absolute inset-0 bg-linear-to-r from-purple-600 to-pink-600 rounded-full"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <Icon className="relative z-10 size-3.5" />
+                <span className="relative z-10">{cat.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Skills Grid */}
         <motion.div
-          initial={{ width: 0, opacity: 0 }}
-          whileInView={{ width: "100%", opacity: 1 }}
-          transition={{ duration: 0.7 }}
-          className="flex-1 h-[3px] bg-linear-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full"
-        />
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="md:text-4xl text-3xl font-bold"
+          layout
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5"
         >
-          Tech Stack
-        </motion.h2>
-        <motion.div
-          initial={{ width: 0, opacity: 0 }}
-          whileInView={{ width: "100%", opacity: 1 }}
-          transition={{ duration: 0.7 }}
-          className="flex-1 h-[3px] bg-linear-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full"
-        />
+          <AnimatePresence>
+            {filteredSkills.map((skill) => {
+              const Icon = skill.icon;
+              return (
+                <motion.div
+                  layout
+                  key={skill.name}
+                  initial={{ opacity: 0, scale: 0.85, y: 15 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.85, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                  whileHover={{ y: -6, scale: 1.03 }}
+                  className="group relative p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-white/8 backdrop-blur-md flex flex-col items-center justify-between text-center cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-purple-500/40 hover:shadow-[0_0_25px_rgba(168,85,247,0.2)]"
+                >
+                  {/* Subtle Glow aura */}
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-15 transition-opacity duration-300 pointer-events-none"
+                    style={{ backgroundColor: skill.color }}
+                  />
+
+                  {/* Icon */}
+                  <div className="relative my-2">
+                    <Icon
+                      className="size-9 sm:size-11 transition-all duration-300 group-hover:scale-110"
+                      style={{ color: skill.color }}
+                    />
+                  </div>
+
+                  {/* Name */}
+                  <div className="mt-2 w-full">
+                    <h4 className="text-white text-sm sm:text-base font-medium font-sans truncate">
+                      {skill.name}
+                    </h4>
+                    <span className="text-[10px] sm:text-xs text-zinc-400 font-mono block mt-0.5 truncate">
+                      {skill.tag}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
       </div>
-
-      {/* 3-column grid: Frontend | Backend | Tools */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: false }}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-16 text-center"
-      >
-        {/* Frontend */}
-        <div>
-          <h3 className="md:text-3xl text-2xl font-bold mb-6">Frontend</h3>
-          <motion.div className="grid grid-cols-3 md:grid-cols-4 gap-6 justify-center">
-            {renderTech(frontend)}
-          </motion.div>
-        </div>
-
-        {/* Backend */}
-        <div>
-          <h3 className="md:text-3xl text-2xl  font-bold mb-6">Backend</h3>
-          <motion.div className="grid grid-cols-3 md:grid-cols-4 gap-6 justify-center">
-            {renderTech(backend)}
-          </motion.div>
-        </div>
-
-        {/* Tools */}
-        <div>
-          <h3 className="md:text-3xl text-2xl  font-bold mb-6">Tech & Tools</h3>
-          <motion.div className="grid grid-cols-3 md:grid-cols-4 gap-6 justify-center">
-            {renderTech(tools)}
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Tilt Hover CSS */}
-      <style>{`
-        .tilt-hover {
-          transform-style: preserve-3d;
-          transition: transform 0.3s;
-        }
-      `}</style>
-    </motion.section>
+    </section>
   );
 }

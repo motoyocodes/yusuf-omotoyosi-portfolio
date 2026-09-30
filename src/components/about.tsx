@@ -1,130 +1,216 @@
-import { FaFile } from "react-icons/fa";
-import { motion, cubicBezier } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FileText, ArrowRight, Code2, Sparkles, Terminal, CheckCircle2 } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
-  const container = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.25,
-      },
-    },
-  };
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-  const paragraphVariants = {
-    hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
-    show: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: { duration: 0.7, ease: cubicBezier(0.22, 1, 0.36, 1) },
-    },
-  };
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header line expansion on scroll
+      gsap.from(".about-header-line", {
+        scaleX: 0,
+        transformOrigin: "left center",
+        duration: 1.0,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
 
-  const buttonVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    show: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5, ease: cubicBezier(0.22, 1, 0.36, 1) },
-    },
-    hover: { scale: 1.05 },
+      // Cards staggered reveal
+      gsap.from(".about-fade-up", {
+        opacity: 0,
+        y: 40,
+        stagger: 0.15,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const scrollToPortfolio = () => {
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (target: string | HTMLElement, opts: object) => void } }).__lenis;
+    const target = document.getElementById("portfolio");
+    if (!target) return;
+    if (lenis) {
+      lenis.scrollTo(target, { duration: 1.2, offset: -60 });
+    } else {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <motion.section
+    <section
       id="about"
-      className="  lg:pb-20 z-10 w-full px-10  pt-20 md:py-12 lg:py-20 pb-10 md:pb-4  text-white font-family-bellefair"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={container}
+      ref={sectionRef}
+      className="relative z-10 w-full px-6 sm:px-10 md:px-16 lg:px-24 py-14 sm:py-16 md:py-20 text-white font-family-bellefair overflow-hidden"
     >
-      {/* TITLE + LINE */}
-      <div className="flex items-center gap-6 mb-12">
-        <motion.h2
-          className="lg:text-4xl text-4xl font-family-momo font-medium"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: cubicBezier(0.22, 1, 0.36, 1) }}
-        >
-          About Me
-        </motion.h2>
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="flex items-center gap-6 mb-10">
+          <div className="flex items-center gap-3">
+            <span className="text-pink-500 font-mono text-sm tracking-wider">01.</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-family-momo tracking-tight">
+              About Me
+            </h2>
+          </div>
+          <div className="about-header-line flex-1 h-[2px] bg-linear-to-r from-purple-500 via-pink-500 to-transparent rounded-full" />
+        </div>
 
-        {/* Gradient line */}
-        <motion.div
-          className="h-[3px] flex-1 bg-linear-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full"
-          initial={{ width: 0 }}
-          animate={{ width: "100%" }}
-          transition={{ duration: 0.8, ease: cubicBezier(0.22, 1, 0.36, 1) }}
-        />
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Interactive Developer Dossier (Glass Card) */}
+          <div className="about-fade-up lg:col-span-5 flex flex-col gap-6">
+            <div className="relative rounded-2xl bg-zinc-950/70 border border-purple-500/20 backdrop-blur-xl p-6 shadow-[0_10px_35px_rgba(0,0,0,0.7)] group hover:border-purple-500/40 transition-all duration-300">
+              {/* Terminal Window Header */}
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                  <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                  <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                </div>
+                <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-400">
+                  <Terminal className="size-3.5 text-purple-400" />
+                  <span>developer.profile.ts</span>
+                </div>
+              </div>
+
+              {/* Code Snippet Spec */}
+              <div className="font-mono text-xs sm:text-sm text-zinc-300 space-y-2.5 leading-relaxed">
+                <div>
+                  <span className="text-purple-400">const</span>{" "}
+                  <span className="text-pink-400">developer</span> = &#123;
+                </div>
+                <div className="pl-4">
+                  <span className="text-zinc-400">name:</span>{" "}
+                  <span className="text-emerald-300">"Omotoyosi Yusuf"</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-zinc-400">title:</span>{" "}
+                  <span className="text-emerald-300">"Creative Frontend & Fullstack"</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-zinc-400">location:</span>{" "}
+                  <span className="text-emerald-300">"Lagos, Nigeria"</span>,
+                </div>
+                <div className="pl-4">
+                  <span className="text-zinc-400">coreFocus:</span> [
+                  <div className="pl-4 text-cyan-300">
+                    "Creative Frontend Engineering",
+                    <br />
+                    "Immersive Web Experiences",
+                    <br />
+                    "Scalable Fullstack Architecture",
+                    <br />
+                    "Intuitive User Interfaces"
+                  </div>
+                  ],
+                </div>
+                <div className="pl-4">
+                  <span className="text-zinc-400">mission:</span>{" "}
+                  <span className="text-yellow-300">
+                    "Transform ideas into living, tactile digital journeys."
+                  </span>
+                </div>
+                <div>&#125;;</div>
+              </div>
+
+              {/* Glowing Corner Accent */}
+              <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-pink-500/10 rounded-full blur-xl pointer-events-none" />
+            </div>
+
+            {/* Quick Metrics */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                <div className="flex items-center gap-2 text-pink-400 mb-1">
+                  <Code2 className="size-4" />
+                  <span className="text-xs font-mono">CODE QUALITY</span>
+                </div>
+                <p className="text-lg font-bold font-mono text-white">Clean & Robust</p>
+                <p className="text-xs text-zinc-400 mt-1">Reliable, scalable, and modular design.</p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                <div className="flex items-center gap-2 text-purple-400 mb-1">
+                  <Sparkles className="size-4" />
+                  <span className="text-xs font-mono">EXPERIENCE</span>
+                </div>
+                <p className="text-lg font-bold font-mono text-white">Fluid & Tactile</p>
+                <p className="text-xs text-zinc-400 mt-1">Delightful motion and responsive transitions.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Narrative Story & Actions */}
+          <div className="about-fade-up lg:col-span-7 flex flex-col justify-between">
+            <div className="space-y-6 text-lg sm:text-xl text-zinc-300 leading-relaxed font-family-bellefair">
+              <p>
+                Hey there! I'm <strong className="text-white font-semibold">Omotoyosi</strong>, a passionate full-stack web developer who loves building smooth, interactive, and visually engaging digital experiences.
+              </p>
+
+              <p>
+                I enjoy creating dynamic UI/UX, exploring new methods, and bringing ideas to life, whether it’s a personal exploration or a large-scale application. Every project I build helps me sharpen my problem-solving skills and push my creativity further.
+              </p>
+
+              <p>
+                If you're searching for a dedicated, curious, and passionate developer, I’m always excited to collaborate and turn your ideas into reality. Let’s create something amazing together!
+              </p>
+
+              {/* Key Principles Checklist */}
+              <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 text-base font-sans">
+                <div className="flex items-center gap-2.5 text-zinc-300">
+                  <CheckCircle2 className="size-4 text-pink-400 shrink-0" />
+                  <span>Fluid micro-interactions & feedback</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-zinc-300">
+                  <CheckCircle2 className="size-4 text-purple-400 shrink-0" />
+                  <span>Immersive visual journeys</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-zinc-300">
+                  <CheckCircle2 className="size-4 text-cyan-400 shrink-0" />
+                  <span>Scalable fullstack architecture</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-zinc-300">
+                  <CheckCircle2 className="size-4 text-emerald-400 shrink-0" />
+                  <span>Mobile-first & accessible design</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap items-center gap-4 mt-10 pt-4 border-t border-white/10">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3.5 rounded-full bg-linear-to-r from-purple-600 via-pink-600 to-purple-600 bg-size-200 hover:bg-right text-white font-medium text-base shadow-[0_0_6px_rgba(236,72,153,0.08)] flex items-center gap-2.5 transition-all duration-300 hover:scale-105 active:scale-95"
+              >
+                <FileText className="size-4" />
+                <span>View Full Resume</span>
+              </a>
+
+              <button
+                onClick={scrollToPortfolio}
+                className="px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-zinc-200 font-medium text-base flex items-center gap-2 transition-all duration-300 hover:border-pink-500/40 cursor-pointer"
+              >
+                <span>Check My Projects</span>
+                <ArrowRight className="size-4" />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div className="flex flex-col items-center">
-        {/* PARAGRAPHS */}
-        <motion.div
-          className="max-w-5xl leading-relaxed text-xl md:text-2xl space-y-6"
-          variants={container}
-        >
-          {[
-            "Hey there! I'm Omotoyosi, a passionate full-stack web developer who loves building smooth, interactive, and visually engaging digital experiences.",
-            "I enjoy creating dynamic UI/UX, exploring new tools, and bringing ideas to life, whether it’s a personal project or a large-scale application. Every project I build helps me sharpen my problem-solving skills and push my creativity further.",
-            "If you're searching for a dedicated, curious, and passionate developer, I’m always excited to collaborate and turn your ideas into reality. Let’s create something amazing together!",
-          ].map((text, index) => (
-            <motion.p
-              key={index}
-              variants={paragraphVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
-              className="text-center md:text-left"
-            >
-              {text}
-            </motion.p>
-          ))}
-        </motion.div>
-
-        {/* BUTTONS */}
-        <motion.div className="flex sm:flex-row gap-4 sm:gap-6 mt-12">
-          {/* Download CV */}
-          <motion.a
-            href="/resume.pdf"
-            target="blank"
-            className="
-      px-4 sm:px-6 py-3 sm:py-1 text-lg  sm:text-xl rounded-xl font-medium
-      border-2 bg-transparent
-      border-linear-to-r from-purple-500 to-pink-500
-      text-white flex gap-2 items-center justify-center hover:gap-3 transition-all ease-in
-      whitespace-nowrap
-    "
-            variants={buttonVariants}
-            initial="hidden"
-            whileInView="show"
-            whileHover="hover"
-          >
-            <FaFile />
-            View CV
-          </motion.a>
-
-          {/* View Projects */}
-          <motion.a
-            href="#portfolio"
-            className="
-      px-6 sm:px-6 py-3 sm:py-3 text-lg sm:text-xl rounded-xl font-medium
-      text-white hover:opacity-80 transition-opacity ease-in-out 
-      bg-linear-to-r from-purple-500 to-pink-500
-      whitespace-nowrap
-      text-center
-    "
-            variants={buttonVariants}
-            initial="hidden"
-            whileInView="show"
-            whileHover="hover"
-          >
-            View Projects
-          </motion.a>
-        </motion.div>
-      </div>
-    </motion.section>
+    </section>
   );
 }

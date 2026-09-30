@@ -1,4 +1,11 @@
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Github,
+  ArrowUpRight,
+} from "lucide-react";
 import { FaReact } from "react-icons/fa";
 import {
   SiTypescript,
@@ -16,445 +23,378 @@ import {
 import {
   omniwell,
   portfolio,
-
   hayven,
   gitwrap,
   naqssunilag,
   adali,
 } from "@/assets";
 
-export const projects = [
+gsap.registerPlugin(ScrollTrigger);
+
+export interface Project {
+  id: string;
+  name: string;
+  category: "3d" | "fullstack" | "featured";
+  badge: string;
+  image: string;
+  description: string;
+  liveDemo: string;
+  github: string;
+  techStack: {
+    name: string;
+    icon: React.ComponentType<{ className?: string; style?: React.CSSProperties; size?: number | string }>;
+    color: string;
+    description: string;
+  }[];
+}
+
+export const projects: Project[] = [
   {
     id: "1",
     name: "Adali",
+    category: "3d",
+    badge: "Digital Atelier",
     image: adali,
-    description: "A premium fashion e-commerce experience built to feel like a digital atelier — GSAP-driven scroll storytelling, a Three.js hardware close-up, and color-swapping product pages, backed by a real Supabase catalog and Stripe checkout across Men's and Women's collections.",
+    description:
+      "A luxury fashion digital atelier featuring scroll storytelling, interactive 3D hardware close-ups, dynamic color-swapping product views, backed by a real Supabase catalog and Stripe checkout.",
     liveDemo: "https://adali.netlify.app/",
     github: "https://github.com/motoyocodes/Adali.git",
-
     techStack: [
-      {
-        name: "Next.js 15",
-        icon: SiNextdotjs,
-        color: "white",
-        description: "App Router & Server Actions",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "#3178C6",
-        description: "Type-safe logic",
-      },
-      {
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        color: "#38BDF8",
-        description: "Styling & Responsive Design",
-      },
-      {
-        name: "Three.js",
-        icon: SiThreedotjs,
-        color: "white",
-        description: "3D Hardware Close-up",
-      },
-      {
-        name: "GSAP",
-        icon: SiGreensock,
-        color: "#88CE02",
-        description: "Scroll Storytelling & Motion",
-      },
-      {
-        name: "Netlify",
-        icon: SiNetlify,
-        color: "#00C7B7",
-        description: "Deployment",
-      },
+      { name: "Three.js", icon: SiThreedotjs, color: "#FFFFFF", description: "3D Hardware Close-up" },
+      { name: "GSAP", icon: SiGreensock, color: "#88CE02", description: "Scroll Storytelling" },
+      { name: "Next.js 15", icon: SiNextdotjs, color: "#FFFFFF", description: "App Router & SSR" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6", description: "Type-safe logic" },
+      { name: "TailwindCSS", icon: SiTailwindcss, color: "#38BDF8", description: "Responsive Atelier UI" },
+      { name: "Netlify", icon: SiNetlify, color: "#00C7B7", description: "Edge Deployment" },
     ],
   },
   {
     id: "2",
-    name: "GitWrap ",
+    name: "GitWrap",
+    category: "featured",
+    badge: "Viral Data Visualization",
     image: gitwrap,
     description:
-      "A developer-focused visualization tool that transforms GitHub contribution data into a 'Spotify Wrapped' style year-in-review. It analyzes coding habits to generate personality archetypes, data-driven roasts, and shareable social receipts.",
+      "A developer visualization tool transforming GitHub contribution matrices into a 'Spotify Wrapped' year-in-review. Analyzes commit velocities to generate coding personality archetypes, AI-driven roasts, and shareable social receipts.",
     liveDemo: "https://gitwrap-mu.vercel.app/",
     github: "https://github.com/motoyocodes/gitwrap",
-
     techStack: [
-      {
-        name: "Next.js 15",
-        icon: SiNextdotjs,
-        color: "white",
-        description: "App Router & Server Actions",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "#3178C6",
-        description: "Type-safe logic",
-      },
-      {
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        color: "#38BDF8",
-        description: "Styling & Responsive Design",
-      },
-      {
-        name: "GraphQL",
-        icon: SiGraphql,
-        color: "#E10098",
-        description: "Data Fetching",
-      },
-      {
-        name: "Framer Motion",
-        icon: SiFramer,
-        color: "#0055FF",
-        description: "Animations & Transitions",
-      },
-      {
-        name: "Vercel",
-        icon: SiVercel,
-        color: "white",
-        description: "Deployment & CI/CD",
-      },
+      { name: "Next.js 15", icon: SiNextdotjs, color: "#FFFFFF", description: "App Router" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6", description: "Type Safety" },
+      { name: "GraphQL", icon: SiGraphql, color: "#E10098", description: "GitHub API" },
+      { name: "Framer Motion", icon: SiFramer, color: "#0055FF", description: "Smooth Transitions" },
+      { name: "TailwindCSS", icon: SiTailwindcss, color: "#38BDF8", description: "Modern UI" },
+      { name: "Vercel", icon: SiVercel, color: "#FFFFFF", description: "Deployment" },
     ],
   },
   {
     id: "3",
     name: "Hayven",
+    category: "fullstack",
+    badge: "Paediatric Health Tech",
     image: hayven,
     description:
-      "A responsive healthcare platform connecting Nigerian families with verified paediatric therapists, featuring therapist discovery, matching, booking, user dashboards, and virtual sessions.",
+      "A comprehensive paediatric healthcare platform connecting Nigerian families with verified therapists. Features therapist matching algorithms, booking flows, patient management dashboards, and real-time consultation sessions.",
     liveDemo: "https://hayven.com.ng/",
     github: "https://github.com/motoyocodes/naqss-unilag.git",
-
     techStack: [
-      {
-        name: "Next.js 15",
-        icon: SiNextdotjs,
-        color: "white",
-        description: "App Router & Server Actions",
-      },
-      {
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        color: "#38BDF8",
-        description: "Styling & Layout",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "#3178C6",
-        description: "Type-safe coding",
-      },
-      {
-        name: "Supabase",
-        icon: SiSupabase,
-        color: "#3ECF8E",
-        description: "Backend DB & Auth",
-      },
-      {
-        name: "Netlify",
-        icon: SiNetlify,
-        color: "#00C7B7",
-        description: "Deployment",
-      },
-      {
-        name: "Framer Motion",
-        icon: SiFramer,
-        color: "#DD00FF",
-        description: "Animations",
-      },
-      {
-        name: "Supabase",
-        icon: SiSupabase,
-        color: "#3ECF8E",
-        description: "Backend DB & Auth",
-      },
+      { name: "Next.js 15", icon: SiNextdotjs, color: "#FFFFFF", description: "Fullstack Architecture" },
+      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E", description: "Database & Auth" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6", description: "Strict Logic" },
+      { name: "TailwindCSS", icon: SiTailwindcss, color: "#38BDF8", description: "Accessible UI" },
+      { name: "Framer Motion", icon: SiFramer, color: "#DD00FF", description: "Fluid Animations" },
+      { name: "Netlify", icon: SiNetlify, color: "#00C7B7", description: "Fast Delivery" },
     ],
   },
   {
     id: "4",
     name: "NaqssUnilag",
+    category: "fullstack",
+    badge: "Academic Portal",
     image: naqssunilag,
     description:
-      "A  website for the department of quantity surveying, university of lagos, designed to provide students with information and resources.",
+      "Official digital gateway for the Department of Quantity Surveying at the University of Lagos. Provides academic archives, course repositories, departmental notices, and leadership directories with blazing fast load speeds.",
     liveDemo: "https://naqss-unilag.netlify.app",
     github: "https://github.com/motoyocodes/naqss-unilag.git",
-
     techStack: [
-      {
-        name: "Next.js 15",
-        icon: SiNextdotjs,
-        color: "white",
-        description: "App Router & Server Actions",
-      },
-      {
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        color: "#38BDF8",
-        description: "Styling & Layout",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "#3178C6",
-        description: "Type-safe coding",
-      },
-      {
-        name: "Vite",
-        icon: SiVite,
-        color: "#646CFF",
-        description: "Development build tool",
-      },
-      {
-        name: "Framer Motion",
-        icon: SiFramer,
-        color: "#DD00FF",
-        description: "Animations",
-      },
-      {
-        name: "Netlify",
-        icon: SiNetlify,
-        color: "#00C7B7",
-        description: "Deployment",
-      },
+      { name: "React", icon: FaReact, color: "#61DAFB", description: "Dynamic SPA" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6", description: "Strict Typing" },
+      { name: "TailwindCSS", icon: SiTailwindcss, color: "#38BDF8", description: "Responsive Design" },
+      { name: "Vite", icon: SiVite, color: "#646CFF", description: "Lightning HMR" },
+      { name: "Framer Motion", icon: SiFramer, color: "#DD00FF", description: "Staggered Reveals" },
+      { name: "Netlify", icon: SiNetlify, color: "#00C7B7", description: "Production Host" },
     ],
   },
-
   {
     id: "5",
     name: "Omniwell",
+    category: "featured",
+    badge: "Fitness & Wellness",
     image: omniwell,
     description:
-      "A modern and responsive fitness website designed for a health and wellness brand, featuring structured content, clean UI, and an engaging user experience.",
+      "A modern wellness and fitness brand platform engineered with high visual aesthetic standards, tailored training modules, interactive wellness calculators, and an engaging subscriber acquisition flow.",
     liveDemo: "https://omniwell.netlify.app/",
     github: "https://github.com/motoyocodes/OmniWell.git",
-
     techStack: [
-      {
-        name: "React",
-        icon: FaReact,
-        color: "#61DAFB",
-        description: "Frontend UI",
-      },
-      {
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        color: "#38BDF8",
-        description: "Styling & Layout",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "#3178C6",
-        description: "Type-safe coding",
-      },
-      {
-        name: "Vite",
-        icon: SiVite,
-        color: "#646CFF",
-        description: "Development build tool",
-      },
-      {
-        name: "Framer Motion",
-        icon: SiFramer,
-        color: "#DD00FF",
-        description: "Animations",
-      },
-      {
-        name: "Netlify",
-        icon: SiNetlify,
-        color: "#00C7B7",
-        description: "Deployment",
-      },
+      { name: "React", icon: FaReact, color: "#61DAFB", description: "Client App" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6", description: "Clean Architecture" },
+      { name: "TailwindCSS", icon: SiTailwindcss, color: "#38BDF8", description: "Modern Styling" },
+      { name: "Vite", icon: SiVite, color: "#646CFF", description: "Build Setup" },
+      { name: "Framer Motion", icon: SiFramer, color: "#DD00FF", description: "Micro-interactions" },
+      { name: "Netlify", icon: SiNetlify, color: "#00C7B7", description: "Global CDN" },
     ],
   },
   {
     id: "6",
     name: "Developer Portfolio",
+    category: "3d",
+    badge: "Interactive Showcase",
     image: portfolio,
     description:
-      "A sleek and interactive portfolio built to showcase a web developer’s skills, projects, and professional journey through a clean layout and smooth navigation.",
+      "A sleek and interactive portfolio built to showcase my skills, projects, and professional journey through an engaging layout and smooth navigation.",
     liveDemo: "https://yusuf-omotoyosi-port.netlify.app/",
     github: "https://github.com/motoyocodes/yusuf-omotoyosi-portfolio.git",
-
     techStack: [
-      {
-        name: "React",
-        icon: FaReact,
-        color: "#61DAFB",
-        description: "Frontend UI",
-      },
-      {
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        color: "#38BDF8",
-        description: "Styling & Layout",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "#3178C6",
-        description: "Type-safe coding",
-      },
-      {
-        name: "Vite",
-        icon: SiVite,
-        color: "#646CFF",
-        description: "Development build tool",
-      },
-      {
-        name: "Framer Motion",
-        icon: SiFramer,
-        color: "#DD00FF",
-        description: "Animations",
-      },
-      {
-        name: "Netlify",
-        icon: SiNetlify,
-        color: "#00C7B7",
-        description: "Deployment",
-      },
+      { name: "Three.js", icon: SiThreedotjs, color: "#FFFFFF", description: "3D Hardware Close-up" },
+      { name: "GSAP", icon: SiGreensock, color: "#88CE02", description: "Scroll Storytelling" },
+      { name: "React", icon: FaReact, color: "#61DAFB", description: "Frontend UI" },
+      { name: "TailwindCSS", icon: SiTailwindcss, color: "#38BDF8", description: "Styling & Layout" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6", description: "Type-safe coding" },
+      { name: "Vite", icon: SiVite, color: "#646CFF", description: "Build tool" },
+      { name: "Framer Motion", icon: SiFramer, color: "#DD00FF", description: "Animations" },
+      { name: "Netlify", icon: SiNetlify, color: "#00C7B7", description: "Deployment" },
     ],
   },
-
 ];
 
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
+// Interactive 3D Tilt Project Card
+function ProjectCard({ project }: { project: Project }) {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-};
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    setRotateX(-y / 25);
+    setRotateY(x / 25);
+  };
+
+  const handleMouseLeave = () => {
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  return (
+    <motion.div
+      layout
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.4 }}
+      style={{
+        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+        transition: "transform 0.15s ease-out, box-shadow 0.3s ease",
+      }}
+      className="group relative rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl overflow-hidden flex flex-col justify-between shadow-[0_10px_35px_rgba(0,0,0,0.6)] hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.25)]"
+    >
+      {/* Top Image Preview with Browser Header Frame */}
+      <div className="relative w-full overflow-hidden bg-black/40">
+        {/* Browser Top Controls */}
+        <div className="flex items-center justify-between px-4 py-2.5 bg-black/50 border-b border-white/10">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+          </div>
+          <span className="text-[11px] font-mono text-zinc-400 tracking-wider">
+            {project.badge}
+          </span>
+          <div className="w-10" />
+        </div>
+
+        {/* Thumbnail with Zoom on Hover */}
+        <div className="relative h-56 sm:h-64 w-full overflow-hidden">
+          <img
+            src={project.image}
+            alt={project.name}
+            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+          />
+          {/* Subtle Ambient Vignette */}
+          <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
+        </div>
+      </div>
+
+      {/* Card Body */}
+      <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between gap-5">
+        <div>
+          {/* Title & Badge */}
+          <div className="flex items-center justify-between gap-2 mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold font-family-momo tracking-tight text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-purple-300 group-hover:to-pink-300 transition-colors">
+              {project.name}
+            </h3>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-purple-500/15 border border-purple-500/30 text-purple-300">
+              {project.category.toUpperCase()}
+            </span>
+          </div>
+
+          {/* Description */}
+          <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-family-bellefair">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Tech Stack Pills */}
+        <div className="flex flex-wrap gap-2 pt-2">
+          {project.techStack.map((tech, idx) => {
+            const Icon = tech.icon;
+            return (
+              <div
+                key={idx}
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 border border-white/8 text-zinc-300 text-xs font-mono group/tech hover:border-purple-500/40 hover:bg-white/10 transition-colors"
+                title={tech.description}
+              >
+                <Icon
+                  style={{ color: tech.color }}
+                  className="size-3.5 group-hover/tech:scale-110 transition-transform"
+                />
+                <span>{tech.name}</span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+          <a
+            href={project.liveDemo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 py-2.5 px-4 rounded-xl bg-linear-to-r from-purple-600 via-pink-600 to-purple-600 bg-size-200 hover:bg-right text-white font-medium text-sm flex items-center justify-center gap-2 shadow-[0_0_6px_rgba(236,72,153,0.08)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <span>Live Experience</span>
+            <ArrowUpRight className="size-4" />
+          </a>
+
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/15 border border-white/12 text-zinc-200 hover:text-white font-medium text-sm flex items-center justify-center gap-2 transition-all hover:border-purple-500/50 hover:scale-[1.02]"
+            aria-label="View Source Code on GitHub"
+          >
+            <Github className="size-4" />
+            <span className="hidden sm:inline">Code</span>
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Portfolio() {
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const filteredProjects =
+    activeFilter === "all"
+      ? projects
+      : projects.filter(
+        (p) => p.category === activeFilter || (activeFilter === "featured" && p.category === "featured")
+      );
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header line expansion
+      gsap.from(".portfolio-header-line", {
+        scaleX: 0,
+        transformOrigin: "left center",
+        duration: 1.0,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="portfolio"
-      className="  w-full md:px-20 px-6 md:py-20 py-20 text-white font-family-bellefair"
+      ref={sectionRef}
+      className="relative z-10 w-full px-6 sm:px-10 md:px-16 lg:px-24 py-14 sm:py-16 md:py-20 text-white font-family-bellefair overflow-hidden"
     >
-      {/* SECTION HEADER */}
-      <div className="flex flex-col   items-center text-center mb-16">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-2xl md:text-4xl font-bold mb-6"
-        >
-          Portfolio Showcase
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="md:text-2xl  text-xl sm:text-3xl max-w-5xl"
-        >
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="flex items-center gap-6 mb-6">
+          <div className="flex items-center gap-3">
+            <span className="text-pink-500 font-mono text-sm tracking-wider">03.</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-family-momo tracking-tight">
+              Featured Works
+            </h2>
+          </div>
+          <div className="portfolio-header-line flex-1 h-[2px] bg-linear-to-r from-purple-500 via-pink-500 to-transparent rounded-full" />
+        </div>
+
+        <p className="text-zinc-300 text-lg sm:text-xl max-w-3xl mb-8 leading-relaxed">
           Explore my journey through projects. Each represents a milestone in my
-          continuous learning path.
-        </motion.p>
-      </div>
+          continuous learning path and creative exploration.
+        </p>
 
-      {/* PROJECT CARDS */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: false }}
-        className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-      >
-        {projects.map((project) => (
-          <motion.div
-            key={project.id}
-            variants={cardVariants}
-            className="
-        bg-white/5 
-        rounded-xl 
-        shadow-[0_0_20px_rgba(236,72,153,0.15)] 
-        border border-pink-500/20 
-        md:px-4 px-4 py-5               
-        flex 
-        flex-col 
-        gap-4 
-        backdrop-blur-md cursor-pointer
-      "
-          >
-            {/* Image */}
-            <div className="w-full h-48 overflow-hidden rounded-lg">
-              <img
-                src={project.image}
-                alt={project.name}
-                className="w-full h-full object-cover hover:scale-105 transition-all duration-300"
-              />
-            </div>
-
-            {/* Title + Description */}
-            <div className="flex-1 flex flex-col gap-2">
-              <h3 className="md:text-lg text-md font-medium font-family-momo">
-                {project.name}
-              </h3>
-              <p className="text-white/80 text-md md:text-lg mb-0">
-                {project.description}
-              </p>
-            </div>
-
-            {/* Tech Stack */}
-            <div className="flex flex-wrap gap-2 ">
-              {project.techStack.map((tech, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg"
-                >
-                  <tech.icon
-                    style={{ color: tech.color }}
-                    className=" text-md md:text-lg"
+        {/* Filter Pills */}
+        <div className="flex flex-wrap items-center gap-2.5 mb-10">
+          {[
+            { id: "all", label: "All Works" },
+            { id: "3d", label: "3D & Interactive" },
+            { id: "fullstack", label: "Fullstack & Cloud" },
+            { id: "featured", label: "Featured & Web Apps" },
+          ].map((tab) => {
+            const isActive = activeFilter === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveFilter(tab.id)}
+                className={`relative px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${isActive
+                  ? "text-white shadow-[0_0_5px_rgba(236,72,153,0.08)]"
+                  : "text-zinc-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/5"
+                  }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="active-portfolio-filter"
+                    className="absolute inset-0 bg-linear-to-r from-purple-600 to-pink-600 rounded-full"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
-                  <span className="text-white/80 text-md md:text-lg">
-                    {tech.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+                )}
+                <span className="relative z-10">{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
 
-            {/*  Live Demo and Github */}
-            <div className="flex justify-around pt-2 items-center">
-              <a
-                href={project.liveDemo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-400 hover:underline text-lg md:text-xl font-medium"
-              >
-                Live Demo
-              </a>
+        {/* Projects Grid */}
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence>
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
-              <a
-                href={project.github}
-                target="_blank"
-                className="
-            px-8 py-1 text-center
-            bg-linear-to-r from-purple-500 to-pink-500 
-            rounded-lg md:text-lg text-md
-            text-white hover:translate-x-1
-            font-medium 
-            hover:opacity-80 
-            transition
-          "
-              >
-                Github
-              </a>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+
+      </div>
     </section>
   );
 }
