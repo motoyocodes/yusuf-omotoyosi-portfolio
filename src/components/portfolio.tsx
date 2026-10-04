@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowUpRight,
+  Github,
 } from "lucide-react";
 import { FaReact } from "react-icons/fa";
 import {
