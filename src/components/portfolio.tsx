@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  Github,
   ArrowUpRight,
 } from "lucide-react";
 import { FaReact } from "react-icons/fa";
@@ -25,7 +24,7 @@ import {
   SiSocketdotio,
 } from "react-icons/si";
 import {
-  omniwell,
+
   portfolio,
   hayven,
   gitwrap,
@@ -95,7 +94,7 @@ export const projects: Project[] = [
 
   {
     id: "3",
-    name: "BOQ Lens",
+    name: "BOQLens",
     category: "featured",
     badge: "AI Document Intelligence & ConTech",
     image: boqlens,
@@ -150,27 +149,9 @@ export const projects: Project[] = [
       { name: "Netlify", icon: SiNetlify, color: "#00C7B7", description: "Production Host" },
     ],
   },
+
   {
     id: "6",
-    name: "Omniwell",
-    category: "featured",
-    badge: "Fitness & Wellness",
-    image: omniwell,
-    description:
-      "A modern wellness and fitness brand platform engineered with high visual aesthetic standards, tailored training modules, interactive wellness calculators, and an engaging subscriber acquisition flow.",
-    liveDemo: "https://omniwell.netlify.app/",
-    github: "https://github.com/motoyocodes/OmniWell.git",
-    techStack: [
-      { name: "React", icon: FaReact, color: "#61DAFB", description: "Client App" },
-      { name: "TypeScript", icon: SiTypescript, color: "#3178C6", description: "Clean Architecture" },
-      { name: "TailwindCSS", icon: SiTailwindcss, color: "#38BDF8", description: "Modern Styling" },
-      { name: "Vite", icon: SiVite, color: "#646CFF", description: "Build Setup" },
-      { name: "Framer Motion", icon: SiFramer, color: "#DD00FF", description: "Micro-interactions" },
-      { name: "Netlify", icon: SiNetlify, color: "#00C7B7", description: "Global CDN" },
-    ],
-  },
-  {
-    id: "7",
     name: "Developer Portfolio",
     category: "3d",
     badge: "Interactive Showcase",
