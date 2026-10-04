@@ -9,7 +9,6 @@ import Contact from "@/components/contact";
 import ThreeScene from "@/components/three/ThreeScene";
 import SmoothScrollProvider from "@/components/common/SmoothScrollProvider";
 import ScrollProgress from "@/components/common/ScrollProgress";
-import CustomCursor from "@/components/common/CustomCursor";
 
 export const Route = createFileRoute("/")({
   component: Homepage,
@@ -32,9 +31,6 @@ function Homepage() {
       >
         {/* Subtle Neon Scroll Progress Indicator */}
         <ScrollProgress />
-
-        {/* Ambient Subtle Interactive Cursor */}
-        <CustomCursor />
 
         {/* Three.js Interactive 3D Background & Kinetic Sculpture */}
         <ThreeScene />

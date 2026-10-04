@@ -63,6 +63,7 @@ export default function Hero() {
         duration: 1.0,
         ease: "power3.out",
         delay: 0.2,
+        clearProps: "all",
       });
 
       gsap.from(".hero-avatar-wrap", {
@@ -71,6 +72,7 @@ export default function Hero() {
         duration: 1.2,
         ease: "power3.out",
         delay: 0.3,
+        clearProps: "all",
       });
     }, heroRef);
 
@@ -131,7 +133,7 @@ export default function Hero() {
           <div className="hero-stagger-item flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
             <button
               onClick={scrollToPortfolio}
-              className="group relative px-7 py-3.5 rounded-full bg-linear-to-r from-purple-600 via-pink-600 to-purple-600 bg-size-200 hover:bg-right transition-all duration-500 text-white font-medium text-base shadow-[0_0_7px_rgba(236,72,153,0.08)] flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95"
+              className="group relative px-7 py-3.5 rounded-full bg-linear-to-r from-purple-600 via-pink-600 to-purple-600 bg-size-200 hover:bg-right transition-[transform,background-position] duration-300 text-white font-medium text-base shadow-[0_0_7px_rgba(236,72,153,0.08)] flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95"
             >
               <Layers className="size-4" />
               <span>Explore Projects</span>
@@ -140,7 +142,7 @@ export default function Hero() {
 
             <button
               onClick={scrollToContact}
-              className="px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-zinc-200 font-medium text-base transition-all duration-300 backdrop-blur-sm flex items-center gap-2 cursor-pointer hover:border-purple-500/50"
+              className="px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-zinc-200 font-medium text-base transition-[border-color,background-color] duration-200 backdrop-blur-sm flex items-center gap-2 cursor-pointer hover:border-purple-500/50"
             >
               <Terminal className="size-4 text-purple-400" />
               <span>Get in Touch</span>
@@ -152,7 +154,7 @@ export default function Hero() {
                 href="https://github.com/motoyocodes"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-zinc-300 hover:text-white transition-all hover:scale-110 shadow-sm"
+                className="p-3 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-zinc-300 hover:text-white transition-[transform,color,background-color] duration-200 hover:scale-110 shadow-sm"
                 aria-label="GitHub profile"
               >
                 <FaGithub className="size-5" />
@@ -161,7 +163,7 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/omotoyosi-yusuf-675455312/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-zinc-300 hover:text-white transition-all hover:scale-110 shadow-sm"
+                className="p-3 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-zinc-300 hover:text-white transition-[transform,color,background-color] duration-200 hover:scale-110 shadow-sm"
                 aria-label="LinkedIn profile"
               >
                 <FaLinkedin className="size-5" />

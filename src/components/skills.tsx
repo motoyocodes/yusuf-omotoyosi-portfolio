@@ -29,6 +29,7 @@ import {
   SiThreedotjs,
   SiGreensock,
   SiGraphql,
+  SiGooglegemini,
 } from "react-icons/si";
 import { Code, Cpu, Layers, Wrench, Sparkles } from "lucide-react";
 import { BiBarChart } from "react-icons/bi";
@@ -60,7 +61,6 @@ const allSkills: SkillItem[] = [
   { name: "HTML5", category: "frontend", icon: SiHtml5, color: "#E44D26", tag: "Semantic DOM" },
   { name: "CSS3", category: "frontend", icon: SiCss3, color: "#1572B6", tag: "Modern Layouts" },
   { name: "Redux Toolkit", category: "frontend", icon: SiRedux, color: "#764ABC", tag: "State Management" },
-  { name: "GraphQL", category: "frontend", icon: SiGraphql, color: "#E10098", tag: "Data Query" },
   { name: "ShadCN UI", category: "frontend", icon: TbSquareRoundedChevronRight, color: "#FFFFFF", tag: "Components" },
   { name: "React Hook Form", category: "frontend", icon: AiOutlineForm, color: "#EC5990", tag: "Form Validation" },
   { name: "Recharts", category: "frontend", icon: BiBarChart, color: "#FF7300", tag: "Data Viz" },
@@ -68,6 +68,8 @@ const allSkills: SkillItem[] = [
   // Backend
   { name: "Node.js", category: "backend", icon: SiNodedotjs, color: "#3C873A", tag: "Runtime" },
   { name: "Express", category: "backend", icon: SiExpress, color: "#FFFFFF", tag: "REST APIs" },
+  { name: "GraphQL", category: "backend", icon: SiGraphql, color: "#E10098", tag: "API & Schemas" },
+  { name: "AI Integration", category: "backend", icon: SiGooglegemini, color: "#8E75B2", tag: "LLMs & RAG" },
   { name: "Supabase", category: "backend", icon: SiSupabase, color: "#3ECF8E", tag: "Postgres & Auth" },
   { name: "MongoDB", category: "backend", icon: SiMongodb, color: "#47A248", tag: "NoSQL DB" },
   { name: "MySQL", category: "backend", icon: SiMysql, color: "#00758F", tag: "Relational DB" },
@@ -110,6 +112,7 @@ export default function Skills() {
         transformOrigin: "center center",
         duration: 1.0,
         ease: "power3.out",
+        clearProps: "transform",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
@@ -189,18 +192,18 @@ export default function Skills() {
                   exit={{ opacity: 0, scale: 0.85, y: -15 }}
                   transition={{ duration: 0.3 }}
                   whileHover={{ y: -6, scale: 1.03 }}
-                  className="group relative p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-white/8 backdrop-blur-md flex flex-col items-center justify-between text-center cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-purple-500/40 hover:shadow-[0_0_25px_rgba(168,85,247,0.2)]"
+                  className="group relative p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-white/8 backdrop-blur-md flex flex-col items-center justify-between text-center cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-[border-color,box-shadow] duration-200 hover:border-purple-500/40 hover:shadow-[0_0_25px_rgba(168,85,247,0.2)]"
                 >
                   {/* Subtle Glow aura */}
                   <div
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-15 transition-opacity duration-300 pointer-events-none"
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-15 transition-opacity duration-200 pointer-events-none"
                     style={{ backgroundColor: skill.color }}
                   />
 
                   {/* Icon */}
                   <div className="relative my-2">
                     <Icon
-                      className="size-9 sm:size-11 transition-all duration-300 group-hover:scale-110"
+                      className="size-9 sm:size-11 transition-transform duration-200 group-hover:scale-110"
                       style={{ color: skill.color }}
                     />
                   </div>

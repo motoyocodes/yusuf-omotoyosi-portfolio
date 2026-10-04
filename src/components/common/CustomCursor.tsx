@@ -1,35 +1,74 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function CustomCursor() {
-  const [pos, setPos] = useState({ x: -100, y: -100 });
-  const [hovered, setHovered] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const cursorRef = useRef<HTMLDivElement | null>(null);
+  const ringRef = useRef<HTMLDivElement | null>(null);
+  const dotRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     // Only enable on non-touch devices
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     if (isTouch) return;
 
+    const cursor = cursorRef.current;
+    const ring = ringRef.current;
+    const dot = dotRef.current;
+    if (!cursor || !ring || !dot) return;
+
+    // Use GSAP quickSetter for zero-overhead direct GPU translation
+    const setCursorX = gsap.quickSetter(cursor, "x", "px");
+    const setCursorY = gsap.quickSetter(cursor, "y", "px");
+
+    let isVisible = false;
+    let isHovered = false;
+
     const handleMouseMove = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      if (!visible) setVisible(true);
+      if (!isVisible) {
+        isVisible = true;
+        cursor.style.opacity = "1";
+      }
+
+      setCursorX(e.clientX);
+      setCursorY(e.clientY);
 
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      const isInteractive =
+      const interactive = !!(
         target.closest("a") ||
         target.closest("button") ||
         target.closest("input") ||
         target.closest("textarea") ||
         target.closest(".interactive") ||
-        target.hasAttribute("data-cursor");
+        target.hasAttribute("data-cursor")
+      );
 
-      setHovered(!!isInteractive);
+      if (interactive !== isHovered) {
+        isHovered = interactive;
+        if (isHovered) {
+          ring.style.transform = "scale(1.5)";
+          ring.style.backgroundColor = "rgba(236, 72, 153, 0.12)";
+          ring.style.borderColor = "rgba(236, 72, 153, 0.7)";
+          dot.style.transform = "translate(-50%, -50%) scale(0)";
+        } else {
+          ring.style.transform = "scale(1)";
+          ring.style.backgroundColor = "rgba(168, 85, 247, 0.08)";
+          ring.style.borderColor = "rgba(168, 85, 247, 0.5)";
+          dot.style.transform = "translate(-50%, -50%) scale(1)";
+        }
+      }
     };
 
-    const handleMouseLeave = () => setVisible(false);
-    const handleMouseEnter = () => setVisible(true);
+    const handleMouseLeave = () => {
+      isVisible = false;
+      cursor.style.opacity = "0";
+    };
+
+    const handleMouseEnter = () => {
+      isVisible = true;
+      cursor.style.opacity = "1";
+    };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     document.addEventListener("mouseleave", handleMouseLeave);
@@ -40,33 +79,27 @@ export default function CustomCursor() {
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [visible]);
-
-  if (!visible) return null;
+  }, []);
 
   return (
     <div
-      className="fixed pointer-events-none z-50 transition-transform duration-75 ease-out"
+      ref={cursorRef}
+      className="fixed pointer-events-none z-50 top-0 left-0 opacity-0 will-change-transform"
       style={{
-        transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
-        left: -12,
-        top: -12,
+        marginLeft: -12,
+        marginTop: -12,
       }}
       aria-hidden="true"
     >
-      {/* Outer ambient glow ring */}
+      {/* Outer ambient ring with targeted micro-transitions */}
       <div
-        className={`w-6 h-6 rounded-full border border-purple-400/60 transition-all duration-200 ease-out ${
-          hovered
-            ? "scale-175 bg-pink-500/20 border-pink-400 shadow-[0_0_16px_rgba(236,72,153,0.5)]"
-            : "scale-100 bg-purple-500/10 shadow-[0_0_8px_rgba(168,85,247,0.3)]"
-        }`}
+        ref={ringRef}
+        className="w-6 h-6 rounded-full border border-purple-400/50 bg-purple-500/10 transition-[transform,background-color,border-color] duration-150 ease-out"
       />
       {/* Center pinpoint */}
       <div
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white transition-transform duration-150 ${
-          hovered ? "scale-0" : "scale-100"
-        }`}
+        ref={dotRef}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white transition-transform duration-100 ease-out"
       />
     </div>
   );

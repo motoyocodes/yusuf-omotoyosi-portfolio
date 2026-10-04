@@ -54,6 +54,7 @@ export default function Contact() {
         transformOrigin: "center center",
         duration: 1.0,
         ease: "power3.out",
+        clearProps: "transform",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
@@ -256,7 +257,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-2 w-full py-3.5 px-6 rounded-2xl bg-linear-to-r from-purple-600 via-pink-600 to-purple-600 bg-size-200 hover:bg-right text-white font-semibold text-base shadow-[0_0_7px_rgba(236,72,153,0.08)] flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 cursor-pointer"
+                className="mt-2 w-full py-3.5 px-6 rounded-2xl bg-linear-to-r from-purple-600 via-pink-600 to-purple-600 bg-size-200 hover:bg-right text-white font-semibold text-base shadow-[0_0_7px_rgba(236,72,153,0.08)] flex items-center justify-center gap-2 transition-[transform,background-position] duration-200 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 cursor-pointer"
               >
                 {isSubmitting ? (
                   <>

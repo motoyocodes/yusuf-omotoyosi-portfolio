@@ -16,6 +16,7 @@ export default function About() {
         transformOrigin: "left center",
         duration: 1.0,
         ease: "power3.out",
+        clearProps: "transform",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
@@ -29,6 +30,7 @@ export default function About() {
         stagger: 0.15,
         duration: 0.9,
         ease: "power3.out",
+        clearProps: "all",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 75%",
@@ -191,10 +193,10 @@ export default function About() {
             {/* Buttons */}
             <div className="flex flex-wrap items-center gap-4 mt-10 pt-4 border-t border-white/10">
               <a
-                href="/resume.pdf"
+                href="/OMOTOYOSI-YUSUF-RESUME.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-full bg-linear-to-r from-purple-600 via-pink-600 to-purple-600 bg-size-200 hover:bg-right text-white font-medium text-base shadow-[0_0_6px_rgba(236,72,153,0.08)] flex items-center gap-2.5 transition-all duration-300 hover:scale-105 active:scale-95"
+                className="px-6 py-3.5 rounded-full bg-purple-600 hover:bg-pink-600 active:bg-pink-700 text-white font-medium text-base flex items-center gap-2.5 cursor-pointer"
               >
                 <FileText className="size-4" />
                 <span>View Full Resume</span>
@@ -202,7 +204,7 @@ export default function About() {
 
               <button
                 onClick={scrollToPortfolio}
-                className="px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-zinc-200 font-medium text-base flex items-center gap-2 transition-all duration-300 hover:border-pink-500/40 cursor-pointer"
+                className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/25 border border-white/20 hover:border-white/30 text-white font-medium text-base flex items-center gap-2 cursor-pointer"
               >
                 <span>Check My Projects</span>
                 <ArrowRight className="size-4" />

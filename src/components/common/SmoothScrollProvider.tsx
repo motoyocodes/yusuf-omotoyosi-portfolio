@@ -31,7 +31,7 @@ export default function SmoothScrollProvider({
     };
 
     gsap.ticker.add(tickerCallback);
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     // Make lenis globally available for smooth anchor clicks
     (window as unknown as { __lenis: Lenis }).__lenis = lenis;

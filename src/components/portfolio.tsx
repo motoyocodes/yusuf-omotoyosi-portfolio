@@ -174,42 +174,17 @@ export const projects: Project[] = [
   },
 ];
 
-// Interactive 3D Tilt Project Card
+// Clean, High-Performance Project Card with zero layout jitter
 function ProjectCard({ project }: { project: Project }) {
-  const cardRef = useRef<HTMLDivElement | null>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    setRotateX(-y / 25);
-    setRotateY(x / 25);
-  };
-
-  const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
-  };
-
   return (
     <motion.div
       layout
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.4 }}
-      style={{
-        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-        transition: "transform 0.15s ease-out, box-shadow 0.3s ease",
-      }}
-      className="group relative rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl overflow-hidden flex flex-col justify-between shadow-[0_10px_35px_rgba(0,0,0,0.6)] hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.25)]"
+      whileHover={{ y: -6 }}
+      className="group relative rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl overflow-hidden flex flex-col justify-between shadow-[0_10px_35px_rgba(0,0,0,0.6)] hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.25)] transition-[border-color,box-shadow] duration-300"
     >
       {/* Top Image Preview with Browser Header Frame */}
       <div className="relative w-full overflow-hidden bg-black/40">
@@ -283,7 +258,7 @@ function ProjectCard({ project }: { project: Project }) {
             href={project.liveDemo}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-2.5 px-4 rounded-xl bg-linear-to-r from-purple-600 via-pink-600 to-purple-600 bg-size-200 hover:bg-right text-white font-medium text-sm flex items-center justify-center gap-2 shadow-[0_0_6px_rgba(236,72,153,0.08)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            className="flex-1 py-2.5 px-4 rounded-xl bg-linear-to-r from-purple-600 via-pink-600 to-purple-600 bg-size-200 hover:bg-right text-white font-medium text-sm flex items-center justify-center gap-2 shadow-[0_0_6px_rgba(236,72,153,0.08)] transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
             <span>Live Experience</span>
             <ArrowUpRight className="size-4" />
@@ -293,7 +268,7 @@ function ProjectCard({ project }: { project: Project }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/15 border border-white/12 text-zinc-200 hover:text-white font-medium text-sm flex items-center justify-center gap-2 transition-all hover:border-purple-500/50 hover:scale-[1.02]"
+            className="py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/15 border border-white/12 text-zinc-200 hover:text-white font-medium text-sm flex items-center justify-center gap-2 transition-[transform,border-color,background-color] duration-200 hover:border-purple-500/50 hover:scale-[1.02]"
             aria-label="View Source Code on GitHub"
           >
             <Github className="size-4" />
@@ -324,6 +299,7 @@ export default function Portfolio() {
         transformOrigin: "left center",
         duration: 1.0,
         ease: "power3.out",
+        clearProps: "transform",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",

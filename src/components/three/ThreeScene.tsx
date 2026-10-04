@@ -65,6 +65,10 @@ export default function ThreeScene() {
     sculptureGroup.position.set(2.4, 0, 0); // Positioned nicely towards the right
     scene.add(sculptureGroup);
 
+    // Decoupled inner group for mouse parallax & ambient spin
+    const innerGroup = new THREE.Group();
+    sculptureGroup.add(innerGroup);
+
     // A. Main Torus Knot (Wireframe & Glass-like)
     const torusGeometry = new THREE.TorusKnotGeometry(1.4, 0.42, 128, 32, 2, 3);
 
@@ -80,7 +84,7 @@ export default function ThreeScene() {
       opacity: 0.45,
     });
     const wireframeTorus = new THREE.Mesh(torusGeometry, wireframeMat);
-    sculptureGroup.add(wireframeTorus);
+    innerGroup.add(wireframeTorus);
 
     // Inner translucent core
     const coreMat = new THREE.MeshPhysicalMaterial({
@@ -98,11 +102,11 @@ export default function ThreeScene() {
     });
     const coreTorus = new THREE.Mesh(torusGeometry, coreMat);
     coreTorus.scale.set(0.96, 0.96, 0.96);
-    sculptureGroup.add(coreTorus);
+    innerGroup.add(coreTorus);
 
     // B. Concentric Orbital Rings
     const ringGroup = new THREE.Group();
-    sculptureGroup.add(ringGroup);
+    innerGroup.add(ringGroup);
 
     const ringGeom1 = new THREE.TorusGeometry(2.3, 0.015, 16, 100);
     const ringMat1 = new THREE.MeshBasicMaterial({
@@ -297,9 +301,9 @@ export default function ThreeScene() {
       ring1.rotation.z = elapsedTime * 0.25;
       ring2.rotation.x = elapsedTime * -0.2;
 
-      // Mouse influence on sculpture
-      sculptureGroup.rotation.x += (mouse.y * 0.3 - sculptureGroup.rotation.x * 0.1) * 0.05;
-      sculptureGroup.rotation.y += (mouse.x * 0.4 - sculptureGroup.rotation.y * 0.1) * 0.05;
+      // Decoupled mouse influence on inner group (never fights GSAP scroll rotation)
+      innerGroup.rotation.x = mouse.y * 0.25;
+      innerGroup.rotation.y = mouse.x * 0.35;
 
       // Slow drift of particle field
       particles.rotation.y = elapsedTime * 0.02 + mouse.x * 0.08;
