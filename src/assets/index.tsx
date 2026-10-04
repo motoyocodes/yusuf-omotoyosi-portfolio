@@ -7,6 +7,7 @@ import gitwrap from "./gitwrap.png";
 import naqssunilag from "./naqssunilag.png";
 import hayven from "./hayven.png";
 import adali from "./adali.png";
+import boqlens from "./boqlens.png";
 
 export {
   portfolio,
@@ -18,5 +19,6 @@ export {
   naqssunilag,
   hayven,
   adali,
+  boqlens,
 };
 

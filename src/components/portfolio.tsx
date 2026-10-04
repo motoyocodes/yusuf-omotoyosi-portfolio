@@ -19,6 +19,10 @@ import {
   SiFramer,
   SiGraphql,
   SiVercel,
+  SiPostgresql,
+  SiPrisma,
+  SiGooglegemini,
+  SiSocketdotio,
 } from "react-icons/si";
 import {
   omniwell,
@@ -27,6 +31,7 @@ import {
   gitwrap,
   naqssunilag,
   adali,
+  boqlens
 } from "@/assets";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -87,8 +92,28 @@ export const projects: Project[] = [
       { name: "Vercel", icon: SiVercel, color: "#FFFFFF", description: "Deployment" },
     ],
   },
+
   {
     id: "3",
+    name: "BOQ Lens",
+    category: "featured",
+    badge: "AI Document Intelligence & ConTech",
+    image: boqlens,
+    description:
+      "A commercial construction intelligence platform that automates Bill of Quantities (BOQ) arithmetic auditing, multi-bidder tender adjudication, and Pareto 80/20 cost driver analytics. Ingests unstandardized spreadsheets and PDFs with real-time WebSocket parsing and grounded Gemini AI document queries.",
+    liveDemo: "https://boqlens.vercel.app",
+    github: "https://github.com/motoyocodes/boqlens",
+    techStack: [
+      { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF", description: "App Router" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6", description: "Type Safety" },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1", description: "Supabase DB" },
+      { name: "Prisma", icon: SiPrisma, color: "#2D3748", description: "ORM & Pooling" },
+      { name: "Gemini AI", icon: SiGooglegemini, color: "#8E75B2", description: "Document RAG" },
+      { name: "Socket.io", icon: SiSocketdotio, color: "#010101", description: "Live Pipeline" },
+    ],
+  },
+  {
+    id: "4",
     name: "Hayven",
     category: "fullstack",
     badge: "Paediatric Health Tech",
@@ -107,7 +132,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "4",
+    id: "5",
     name: "NaqssUnilag",
     category: "fullstack",
     badge: "Academic Portal",
@@ -126,7 +151,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "5",
+    id: "6",
     name: "Omniwell",
     category: "featured",
     badge: "Fitness & Wellness",
@@ -145,7 +170,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "6",
+    id: "7",
     name: "Developer Portfolio",
     category: "3d",
     badge: "Interactive Showcase",

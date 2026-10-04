@@ -114,7 +114,7 @@ export default function Hero() {
           <div className="hero-stagger-item grid grid-cols-2 gap-3 w-full max-w-xs sm:max-w-sm mb-6">
             <div className="p-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm flex flex-col items-center lg:items-start">
               <span className="text-xl sm:text-2xl font-bold font-mono text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">
-                06+
+                07+
               </span>
               <span className="text-xs text-zinc-400 font-mono">Shipped Works</span>
             </div>
