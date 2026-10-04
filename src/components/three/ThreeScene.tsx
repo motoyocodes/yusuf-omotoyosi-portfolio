@@ -194,14 +194,6 @@ export default function ThreeScene() {
     const particles = new THREE.Points(particleGeometry, particleMaterial);
     scene.add(particles);
 
-    // 4. Interactive Mouse Parallax (smooth Lerp)
-    const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.targetX = (e.clientX / window.innerWidth - 0.5) * 2;
-      mouse.targetY = -(e.clientY / window.innerHeight - 0.5) * 2;
-    };
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-
     // Handle Resize
     const handleResize = () => {
       const width = window.innerWidth;
@@ -288,11 +280,7 @@ export default function ThreeScene() {
 
       const elapsedTime = clock.getElapsedTime();
 
-      // Smooth mouse lerp
-      mouse.x += (mouse.targetX - mouse.x) * 0.05;
-      mouse.y += (mouse.targetY - mouse.y) * 0.05;
-
-      // Ambient self-rotation
+      // Ambient self-rotation (smooth clock-based, zero mouse shaking)
       wireframeTorus.rotation.x = elapsedTime * 0.15;
       wireframeTorus.rotation.y = elapsedTime * 0.2;
       coreTorus.rotation.x = elapsedTime * 0.15;
@@ -301,13 +289,9 @@ export default function ThreeScene() {
       ring1.rotation.z = elapsedTime * 0.25;
       ring2.rotation.x = elapsedTime * -0.2;
 
-      // Decoupled mouse influence on inner group (never fights GSAP scroll rotation)
-      innerGroup.rotation.x = mouse.y * 0.25;
-      innerGroup.rotation.y = mouse.x * 0.35;
-
       // Slow drift of particle field
-      particles.rotation.y = elapsedTime * 0.02 + mouse.x * 0.08;
-      particles.rotation.x = elapsedTime * 0.01 + mouse.y * 0.08;
+      particles.rotation.y = elapsedTime * 0.02;
+      particles.rotation.x = elapsedTime * 0.01;
 
       // Gentle pulsating lights
       pointLight1.intensity = 3.5 + Math.sin(elapsedTime * 1.5) * 1.0;
@@ -321,7 +305,6 @@ export default function ThreeScene() {
     // 7. Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 

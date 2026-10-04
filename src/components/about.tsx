@@ -22,20 +22,6 @@ export default function About() {
           start: "top 80%",
         },
       });
-
-      // Cards staggered reveal
-      gsap.from(".about-fade-up", {
-        opacity: 0,
-        y: 40,
-        stagger: 0.15,
-        duration: 0.9,
-        ease: "power3.out",
-        clearProps: "all",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-        },
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -73,8 +59,8 @@ export default function About() {
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Interactive Developer Dossier (Glass Card) */}
-          <div className="about-fade-up lg:col-span-5 flex flex-col gap-6">
-            <div className="relative rounded-2xl bg-zinc-950/70 border border-purple-500/20 backdrop-blur-xl p-6 shadow-[0_10px_35px_rgba(0,0,0,0.7)] group hover:border-purple-500/40 transition-all duration-300">
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="relative rounded-2xl bg-zinc-950/70 border border-purple-500/20 backdrop-blur-xl p-6 shadow-[0_10px_35px_rgba(0,0,0,0.7)]">
               {/* Terminal Window Header */}
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
                 <div className="flex items-center gap-2">
@@ -155,7 +141,7 @@ export default function About() {
           </div>
 
           {/* Right Column: Narrative Story & Actions */}
-          <div className="about-fade-up lg:col-span-7 flex flex-col justify-between">
+          <div className="lg:col-span-7 flex flex-col justify-between">
             <div className="space-y-6 text-lg sm:text-xl text-zinc-300 leading-relaxed font-family-bellefair">
               <p>
                 Hey there! I'm <strong className="text-white font-semibold">Omotoyosi</strong>, a passionate full-stack web developer who loves building smooth, interactive, and visually engaging digital experiences.
